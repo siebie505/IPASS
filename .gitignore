@@ -1,0 +1,17 @@
+*.o
+*.map
+*.exe
+*.ld
+*.bin
+*.elf
+*.bat
+.codelite/
+.codelite/*.*
+_codelite.project
+_codelite.session
+__codelite.workspace
+.project
+_cpp_flags
+_linker_flags
+_cc_flags
+bmptk_*_stack.c
