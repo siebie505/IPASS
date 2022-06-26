@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := ADCHIP.cpp synthesizer.cpp
+SOURCES := ADCHIP.cpp synthesizer.cpp keyboardButtons.cpp note.cpp
 
 # header files in this project
-HEADERS := ADCHIP.hpp soundchip.hpp synthesizer.hpp
+HEADERS := ADCHIP.hpp soundchip.hpp synthesizer.hpp keyboard.hpp pin_in_invert.hpp keyboardButtons.hpp note.hpp
 
 
 # other places to look for files for this project
@@ -24,6 +24,7 @@ SERIAL_PORT_DUE   ?= COM3
 # and defer to the appropriate Makefile.* there
 RELATIVE := ..
 include $(RELATIVE)/Makefile.due
+
 # The contents of this makefile can be added at the end of any makefile to help extract its final parameters
 
 

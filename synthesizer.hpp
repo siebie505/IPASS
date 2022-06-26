@@ -1,6 +1,7 @@
 #include "ADCHIP.hpp"
 #include "hwlib.hpp"
 #include "keyboard.hpp"
+//#include "note.hpp"
 
 #ifndef SYNTHESIZER_HPP
 #define SYNTHESIZER_HPP
@@ -10,6 +11,7 @@ namespace synthesizer {
     private:
         soundchip::soundchip& chip;
         keyboard::keyboard& keyboard;
+//        note::note note;
 
         const float noteA4 = 440.0;
         const float noteBb4 = 466.2;
@@ -24,16 +26,26 @@ namespace synthesizer {
         const float noteG5 = 784.0;
         const float noteAb5 = 830.6;
 
+        bool vibrato;
+        bool phaseVibrato;
+        int vibratoSpeed;
+        int vibratoDepth;
+        int phaseVibratoSpeed;
+        int phaseVibratoDepth;
         bool glissando;
         int glissandoTime;
         int glissandoCooldown;
         float currentNote;
         float lastNote;
+        int currentPhase;
+        float currentFreq; // als vibrato aanstaat wijkt deze af van currentNote. currentNote is namelijk de frequentie van de oorspronkelijk toon, currentFreq de daadwerkelijke frequentie op dat moment.
         int count;
 
         unsigned int keyNum;
 
         std::array<bool, 13> keyStates;
+
+//        std::array<bool, 13> usedKeys;
 
         void checkNote();
 
@@ -66,7 +78,19 @@ namespace synthesizer {
 
         void disableGlissando();
 
-        void vibrato(const int &depth, const int &speed);
+        void enableVibrato(const int& depth, const int& speed);
+
+        void disableVibrato();
+
+//        void updateVibrato();
+
+        void enablePhaseVibrato(const int& depth, const int& speed);
+
+        void disablePhaseVibrato();
+
+//        void updatePhaseVibrato();
+
+        void setNote();
     };
 }
 
