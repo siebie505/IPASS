@@ -6,6 +6,8 @@
 #include "pin_in_invert.hpp"
 #include "keyboardButtons.hpp"
 
+
+
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
 
@@ -50,9 +52,9 @@ int main() {
     auto key12 = pin_in_invert(key12ActiveLow);
     auto key13 = pin_in_invert(key13ActiveLow);
 
-    const int num_keys = 13;
+    std::array<hwlib::pin_in*, numKeys> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
 
-    std::array<hwlib::pin_in*, num_keys> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
+//    std::vector<hwlib::pin_in*> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
 
     auto keyboard = keyboard::keyboardButtons(keys);
     auto synth = synthesizer::synthesizer(ad9833, keyboard);

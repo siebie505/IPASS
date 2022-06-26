@@ -1,7 +1,10 @@
 #include "ADCHIP.hpp"
 #include "hwlib.hpp"
 #include "keyboard.hpp"
+#include "vector"
 //#include "note.hpp"
+
+#define numKeys 13
 
 #ifndef SYNTHESIZER_HPP
 #define SYNTHESIZER_HPP
@@ -43,9 +46,12 @@ namespace synthesizer {
 
         unsigned int keyNum;
 
-        std::array<bool, 13> keyStates;
+        std::array<bool, numKeys> keyStates;
 
-//        std::array<bool, 13> usedKeys;
+//        std::vector<bool> keyStates;
+//        std::vector<bool> usedKeys;
+
+        std::array<bool, numKeys> usedKeys;
 
         void checkNote();
 

@@ -95,7 +95,7 @@ void synthesizer::synthesizer::setNote() {
 
         // als er wel een noot gespeeld wordt, maar de noot hiervoro was te lang geleden voor glissando of glissando staat uit, speel dan de noot normaal
     else if(currentNote != 0 && (lastNote == 0 || count >= glissandoCooldown || glissando == false)) {
-        auto currentNoteObject = note::note(*this, currentNote, currentPhase, vibrato, phaseVibrato, vibratoSpeed, vibratoDepth, phaseVibratoSpeed, phaseVibratoDepth);
+//        auto currentNoteObject = note::note(*this, currentNote, currentPhase, vibrato, phaseVibrato, vibratoSpeed, vibratoDepth, phaseVibratoSpeed, phaseVibratoDepth);
         setFreq(currentNote);
         play();
         lastNote = currentNote;
@@ -217,7 +217,7 @@ void synthesizer::synthesizer::update() {
 synthesizer::synthesizer::synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys) : chip(chip), keyboard(keys) {
     stop();
     // defaults
-    keyStates.fill(0);
+//    keyStates.fill(0);
     glissando = false;
     glissandoTime = 5;
     glissandoCooldown = 35;

@@ -1,29 +1,34 @@
 #include "hwlib.hpp"
 #include "keyboard.hpp"
 
+#define numKeys 13
+
 #ifndef KEYBOARD_BUTTONS_HPP
 #define KEYBOARD_BUTTONS_HPP
 
 namespace keyboard {
     class keyboardButtons : public keyboard {
     private:
-//        std::array<hwlib::pin_in *, 13>& keys;
-//        std::array<bool, 13> keyStates;
-////        std::array<bool, 13> usedKeys;
+//        std::array<hwlib::pin_in *, numKeys>& keys;
+//        std::array<bool, numKeys> keyStates;
+////        std::array<bool, numKeys> usedKeys;
 //        unsigned int keyNum;
 
-        void checkActiveKeys();
+        void checkActiveKeys() override;
 
     public:
-        explicit keyboardButtons(std::array<hwlib::pin_in *, 13>& keys);
+//        explicit keyboardButtons(std::vector<hwlib::pin_in *>& keys);
+        explicit keyboardButtons(std::array<hwlib::pin_in *, numKeys>& keys);
 
-        void update();
+        void update() override;
 
-        std::array<bool, 13> getActiveKeys();
+        std::array<bool, numKeys> getActiveKeys() override;
 
-//        void setKeyUsed(unsigned int& keyIndex);
+//        std::vector<bool> getActiveKeys() override;
 
-//        std::array<bool, 13> getUsedKeys();
+//        void setKeyUsed(unsigned int& keyIndex) override;
+
+//        std::array<bool, numKeys> getUsedKeys() override;
     };
 }
 
