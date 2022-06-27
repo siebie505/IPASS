@@ -2,8 +2,7 @@
 #include "hwlib.hpp"
 #include "keyboard.hpp"
 #include "vector"
-
-#define NUMKEYS 13
+#include "numkeys.hpp"
 
 #ifndef SYNTHESIZER_HPP
 #define SYNTHESIZER_HPP

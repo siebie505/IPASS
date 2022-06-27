@@ -1,7 +1,7 @@
 #include "hwlib.hpp"
 #include "keyboard.hpp"
 
-#define NUMKEYS 13
+#include "numkeys.hpp"
 
 #ifndef KEYBOARD_BUTTONS_HPP
 #define KEYBOARD_BUTTONS_HPP
