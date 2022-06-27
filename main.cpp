@@ -61,9 +61,9 @@ int main() {
     auto synth = synthesizer::synthesizer(ad9833, keyboard);
 
     synth.setWave(SINE);
-//    synth.enableVibrato(10, 2);
-//    synth.enablePhaseVibrato(5, 2);
-//    synth.enableGlissando(0.3);
+//    synth.enableVibrato(50, 5);
+    synth.enablePhaseVibrato(5, 2);
+//    synth.enableGlissando(1);
 
     std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
 

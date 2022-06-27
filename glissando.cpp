@@ -72,7 +72,10 @@ void glissando::update() {
 
 //    hwlib::cout << "i" << iteration << "\n" << int(currentFreq) << "\n";
 //    hwlib::cout <<
-    vibrato1.setFreq(currentFreq);
+    if(currentFreq != lastFreq) {
+        vibrato1.setFreq(currentFreq);
+    }
+    lastFreq = currentFreq;
 }
 
 void glissando::setNotes(const float& currentNote_p, const float& lastNote_p) {

@@ -15,16 +15,19 @@ void vibrato::set(const bool &vibrato_p, const int& vibratoSpeed_p,
 
 void vibrato::update() {
     if(vibratoOn) {
+
         long long currTime = hwlib::now_us();
         long long timeBetweenUpdates = (1 / (vibratoSpeed * 1000000)) / (4 * vibratoDepth);
-
+        hwlib::cout << "s"<< "t"<< "a"<< "t"<< "e"<< ":"<< " " << state << "\n";
         switch(state) {
             case 0 :
                 if (iteratieIncrement > vibratoDepth) {
+                    hwlib::cout << "!" << "\n";
                     state = 1;
                     //                    fallStartTime = hwlib::now_us();
                     iteratieDecrement = 0;
                 } else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
+                    hwlib::cout << "?" << "\n";
                     //                    incrementStartTime = hwlib::now_us();
                     currentFreq++;
                     iteratieIncrement++;
@@ -33,6 +36,7 @@ void vibrato::update() {
                 break;
 
             case 1:
+                hwlib::cout << "h" << "\n";
                 if (iteratieDecrement > vibratoDepth * 2) {
                     state = 2;
     //                    secondClimbStartTime = hwlib::now_us();
@@ -65,7 +69,7 @@ void vibrato::update() {
     else {
         currentFreq = startFreq;
     }
-    hwlib::cout << int(currentFreq) << "\n";
+    hwlib::cout << "c" << "u" << "r" << "r"<< ":" << " "  << int(currentFreq) << "\n";
     chip.setFreq(currentFreq);
 }
 

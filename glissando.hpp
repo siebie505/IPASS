@@ -16,6 +16,7 @@ namespace effects {
         float currentNote = 1000;
         float lastNote = 1000;
         float currentFreq = 0;
+        float lastFreq = 0;
 
         int iteration = 0;
         long long timeSinceLastUpdate = 0;
