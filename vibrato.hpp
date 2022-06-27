@@ -1,5 +1,6 @@
 #include "soundchip.hpp"
 #include "phaseVibrato.hpp"
+#include <string>
 
 #ifndef VIBRATO_HPP
 #define VIBRATO_HPP
@@ -8,7 +9,8 @@
 namespace effects {
     class vibrato {
     private:
-        effects::phaseVibrato& phaseVibrato1;
+        soundchip::soundchip& chip;
+//        effects::phaseVibrato& phaseVibrato1;
         int iteratieIncrement = 0;
         int iteratieDecrement = 0;
         float startFreq = 1000;
@@ -16,14 +18,21 @@ namespace effects {
         bool vibratoOn = false;
         int vibratoSpeed = 5, vibratoDepth = 5;
 
+
+        string state = "initialClimb";
+//        long long initialClimbStartTime = 0;
+//        long long fallStartTime = 0;
+//        long long secondClimbStartTime = 0;
+//        long long incrementStartTime = 0;
+//        long long decrementStartTime = 0;
+        long long timeSinceLastUpdate = 0;
+
     public:
-        vibrato(effects::phaseVibrato& phaseVibrato1);
+        vibrato(soundchip::soundchip& chip);
 
         void setAll(const float &freq_p, const bool &vibrato_p, const bool &phaseVibrato_p, const int& vibratoSpeed_p);
 
-        void incrementFreq(const float& increment);
-
-        void decrementFreq(const float& increment);
+        void setFreq(const float& freq_p);
 
         void update();
     };

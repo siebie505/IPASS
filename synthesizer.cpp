@@ -23,9 +23,10 @@ void synthesizer::synthesizer::disablePhaseVibrato() {
 }
 
 
-void synthesizer::synthesizer::enableGlissando(const int& glissandoTime_p, const int& glissandoCooldown_p) {
+void synthesizer::synthesizer::enableGlissando(const int& glissandoTime_p) {
+//    const int& glissandoCooldown_p
     glissandoTime = glissandoTime_p;
-    glissandoCooldown = glissandoCooldown_p;
+//    glissandoCooldown = glissandoCooldown_p;
     glissando = true;
 }
 
@@ -45,79 +46,83 @@ void synthesizer::synthesizer::checkNote() {
     switch(currentKey) {
         case 0 :
             currentNote = noteC5;
+            chip.enableOutput();
             break;
         case 1 :
             currentNote = noteDb5;
+            chip.enableOutput();
             break;
         case 2 :
             currentNote = noteD5;
+            chip.enableOutput();
             break;
         case 3 :
             currentNote = noteEb5;
+            chip.enableOutput();
             break;
         case 4 :
             currentNote = noteE5;
+            chip.enableOutput();
             break;
         case 5 :
             currentNote = noteF5;
+            chip.enableOutput();
             break;
         case 6 :
             currentNote = noteGb5;
+            chip.enableOutput();
             break;
         case 7 :
             currentNote = noteG5;
+            chip.enableOutput();
             break;
         case 8 :
             currentNote = noteAb5;
+            chip.enableOutput();
             break;
         case 9 :
             currentNote = noteA4 * 2; // octaaf hoger dan A4
+            chip.enableOutput();
             break;
         case 10 :
             currentNote = noteBb4 * 2; // octaaf hoger dan Bb4
+            chip.enableOutput();
             break;
         case 11 :
             currentNote = noteB4 * 2; // octaaf hoger dan B4
+            chip.enableOutput();
             break;
         case 12 :
             currentNote = noteC5 * 2; // octaaf hoger dan C5
+            chip.enableOutput();
             break;
         default:
-            currentNote = 0;
+            currentNote = -1;
+            chip.disableOutput();
             break;
     }
 }
 
 void synthesizer::synthesizer::update() {
-//    long long currTime = hwlib::now_us();
-//    switch(state) {
-//        case state1:
-//            if(currTime - state1StartTime > threshold) {
-//                state = state2;
-//                state2StartTime = hwlib::now_us();
-//                state2Do.exec();
-//            }
-//            break;
-//        case state2:
-//            break;
-//    }
-
     keyboard.update();
     keyStates = keyboard.getActiveKeys();
 //    usedKeys = keyboard.getUsedKeys();
 
     checkNote();
 
+    glissando1.setAll(currentNote, lastNote, glissando, glissandoTime);
+//    glissandoCooldown
     vibrato1.setAll(currentNote, vibrato, vibratoSpeed, vibratoDepth);
 
     phaseVibrato1.setAll(currentPhase, phaseVibrato, phaseVibratoSpeed, phaseVibratoDepth);
 
-    glissando1.setAll(currentNote, lastNote, glissando, glissandoTime, glissandoCooldown);
 
-
+    glissando1.update();
     vibrato1.update();
     phaseVibrato1.update();
-    glissando1.update();
+
+
+    lastNote = currentNote;
 }
 
 synthesizer::synthesizer::synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys) : chip(chip), keyboard(keys), phaseVibrato1(chip), vibrato1(phaseVibrato1), glissando1(phaseVibrato1) {

@@ -38,7 +38,7 @@ namespace synthesizer {
         int phaseVibratoSpeed = 5;
         int phaseVibratoDepth = 5;
         int glissandoTime = 5;
-        int glissandoCooldown = 5;
+//        int glissandoCooldown = 5;
         float currentNote = 1000;
         float lastNote = 1000;
         int currentPhase = 0;
@@ -58,7 +58,8 @@ namespace synthesizer {
 
         void update();
 
-        void enableGlissando(const int &glissandoTime_p, const int &glissandoCooldown_p);
+        void enableGlissando(const int &glissandoTime_p);
+//        , const int &glissandoCooldown_p
 
         void disableGlissando();
 

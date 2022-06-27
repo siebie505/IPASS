@@ -11,13 +11,18 @@ namespace effects {
         effects::vibrato& vibrato1;
         bool glissandoOn = false;
         int glissandoTime = 5;
-        int glissandoCooldown = 5;
+//        int glissandoCooldown = 5;
         float currentNote = 1000;
         float lastNote = 1000;
+        float currentFreq = 0;
+
+        int iteration = 0;
+        long long timeSinceLastUpdate = 0;
     public:
         glissando(effects::vibrato& vibrato1);
 
-        void setAll(const float& currentNote_p, const float& lastNote_p, const bool& glissandoOn_p, int glissandoTime_p, int glissandoCooldown_p);
+        void setAll(const float& currentNote_p, const float& lastNote_p, const bool& glissandoOn_p, int glissandoTime_p);
+//        , int glissandoCooldown_p
 
         void update();
     };

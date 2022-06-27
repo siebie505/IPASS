@@ -1,5 +1,6 @@
 #include "soundchip.hpp"
 #include "vibrato.hpp"
+#include <string>
 
 #ifndef PHASEVIBRATO_HPP
 #define PHASEVIBRATO_HPP
@@ -13,16 +14,21 @@ namespace effects {
         int phaseVibratoDepth = 5;
         int startPhase = 0;
         int currentPhase = 0;
-        int iterationIncrement = 0;
-        int iterationDecrement = 0;
+        int iteratieIncrement = 0;
+        int iteratieDecrement = 0;
+
+
+//        long incrementStartTime = 0;
+//        long long decrementStartTime = 0;
+//        long long initialClimbStartTime = 0;
+//        long long fallStartTime = 0;
+//        long long secondClimbStartTime = 0;
+        string state = "initialClimb";
+        long long timeSinceLastUpdate = 0;
     public:
         phaseVibrato(soundchip::soundchip& chip);
 
         void setAll(const int& phase_p, const bool& phaseVibratoOn_p, const int& phaseVibratoSpeed_p, const int& phaseVibratoDepth_p);
-
-        void incrementPhase(const int& increment);
-
-        void decrementPhase(const int& decrement);
 
         void update();
     };
