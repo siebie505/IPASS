@@ -2,9 +2,8 @@
 #include "hwlib.hpp"
 #include "keyboard.hpp"
 #include "vector"
-//#include "note.hpp"
 
-#define numKeys 13
+#define NUMKEYS 13
 
 #ifndef SYNTHESIZER_HPP
 #define SYNTHESIZER_HPP
@@ -14,7 +13,10 @@ namespace synthesizer {
     private:
         soundchip::soundchip& chip;
         keyboard::keyboard& keyboard;
-//        note::note note;
+
+        effects::vibrato& vibrato1;
+        effects::phaseVibrato& phaseVibrato1;
+        effects::glissando& glissando1;
 
         const float noteA4 = 440.0;
         const float noteBb4 = 466.2;
@@ -29,58 +31,35 @@ namespace synthesizer {
         const float noteG5 = 784.0;
         const float noteAb5 = 830.6;
 
-        bool vibrato;
-        bool phaseVibrato;
-        int vibratoSpeed;
-        int vibratoDepth;
-        int phaseVibratoSpeed;
-        int phaseVibratoDepth;
-        bool glissando;
-        int glissandoTime;
-        int glissandoCooldown;
-        float currentNote;
-        float lastNote;
-        int currentPhase;
-        float currentFreq; // als vibrato aanstaat wijkt deze af van currentNote. currentNote is namelijk de frequentie van de oorspronkelijk toon, currentFreq de daadwerkelijke frequentie op dat moment.
-        int count;
-
-        unsigned int keyNum;
+        bool vibrato = false;
+        bool phaseVibrato = false;
+        bool glissando = false;
+        int vibratoSpeed = 5;
+        int vibratoDepth = 5;
+        int phaseVibratoSpeed = 5;
+        int phaseVibratoDepth = 5;
+        int glissandoTime = 5;
+        int glissandoCooldown = 5;
+        float currentNote = 1000;
+        float lastNote = 1000;
+        int currentPhase = 0;
 
         std::array<bool, numKeys> keyStates;
 
-//        std::vector<bool> keyStates;
-//        std::vector<bool> usedKeys;
-
-        std::array<bool, numKeys> usedKeys;
+//        std::array<bool, numKeys> usedKeys;
 
         void checkNote();
 
     public:
         synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys);
 
-        void setFreq(const float& freq_hz);
-
         void setPhase(const int& phase_deg);
 
         void setWave(const waveType& wavetype);
 
-        void play();
-
-        void stop();
-
-        void playCMajor();
-
-        void playCMinor();
-
-        void playAChromatic();
-
-        void random();
-
         void update();
 
-        void soundEffect();
-
-        void enableGlissando(const int &glissandoTime_p = 5, const int &glissandoCooldown_p = 35);
+        void enableGlissando(const int &glissandoTime_p, const int &glissandoCooldown_p);
 
         void disableGlissando();
 
@@ -88,15 +67,10 @@ namespace synthesizer {
 
         void disableVibrato();
 
-//        void updateVibrato();
-
         void enablePhaseVibrato(const int& depth, const int& speed);
 
         void disablePhaseVibrato();
 
-//        void updatePhaseVibrato();
-
-        void setNote();
     };
 }
 

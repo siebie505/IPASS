@@ -52,9 +52,8 @@ int main() {
     auto key12 = pin_in_invert(key12ActiveLow);
     auto key13 = pin_in_invert(key13ActiveLow);
 
-    std::array<hwlib::pin_in*, numKeys> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
+    std::array<hwlib::pin_in*, NUMKEYS> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
 
-//    std::vector<hwlib::pin_in*> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
 
     auto keyboard = keyboard::keyboardButtons(keys);
     auto synth = synthesizer::synthesizer(ad9833, keyboard);
@@ -64,12 +63,7 @@ int main() {
 
     std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
 
-    std::array<keyboard::keyboard*, 1 > keyboards = {&keyboard};
-
     for(;;) {
-        for(keyboard::keyboard* keyboardCurrent : keyboards) {
-            keyboardCurrent->update();
-        }
         for(synthesizer::synthesizer* synthCurrent : synths) {
             synthCurrent->update();
         }

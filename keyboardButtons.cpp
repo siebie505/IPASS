@@ -1,19 +1,11 @@
 #include "keyboardButtons.hpp"
 #include "hwlib.hpp"
 
-keyboard::keyboardButtons::keyboardButtons(std::array<hwlib::pin_in *, numKeys>& keys) : keyboard(keys) {
-    keyStates.fill(0);
-//    usedKeys.fill(0);
+keyboard::keyboardButtons::keyboardButtons(std::array<hwlib::pin_in *, NUMKEYS>& keys) : keyboard(), keys(keys) {
 }
 
-//keyboard::keyboardButtons::keyboardButtons(std::vector<hwlib::pin_in *>& keys) :  keyboard(keys) {
-////    keyStates.fill(0);
-////    usedKeys.fill(0);
-//}
-
 void keyboard::keyboardButtons::checkActiveKeys() {
-//    std::array<bool, numKeys> keyStates;
-    for(unsigned int i = 0; i < numKeys; i++) {
+    for(unsigned int i = 0; i < NUMKEYS; i++) {
         hwlib::pin_in* keyPointer = keys[i];
         keyPointer->refresh();
         keyStates[i] = keyPointer->read();
@@ -36,10 +28,6 @@ void keyboard::keyboardButtons::update() {
     checkActiveKeys();
 }
 
-std::array<bool, numKeys> keyboard::keyboardButtons::getActiveKeys() {
+std::array<bool, NUMKEYS> keyboard::keyboardButtons::getActiveKeys() {
     return keyStates;
 }
-
-//std::vector<bool> keyboard::keyboardButtons::getActiveKeys() {
-//    return keyStates;
-//}
