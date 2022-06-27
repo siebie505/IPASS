@@ -65,7 +65,7 @@ void vibrato::update() {
     else {
         currentFreq = startFreq;
     }
-//    hwlib::cout << int(currentFreq) << "\n";
+    hwlib::cout << int(currentFreq) << "\n";
     chip.setFreq(currentFreq);
 }
 

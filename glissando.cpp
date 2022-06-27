@@ -35,17 +35,17 @@ void glissando::update() {
         if(lastNote == currentNote || lastNote == -1) { // als de toets ingehouden wordt op dezelfde noot, of als er hiervoor geen knop ingedrukt was(lastnote = -1 geeft aan dat er hiervoor geen note was)
             currentFreq = currentNote;
 //            iteration = 0;
-            hwlib::cout << 1 << "\n";
+//            hwlib::cout << 1 << "\n";
             glissandoDone = true;
         }
         else if(iteration == 0) {
             currentFreq = lastNote;
             iteration++;
-            hwlib::cout << 2 << "\n";
+//            hwlib::cout << 2 << "\n";
         }
 
         else if(currTime - timeSinceLastUpdate > timeBetweenUpdates_us){
-            hwlib::cout << 3 << "\n";
+//            hwlib::cout << 3 << "\n";
 //            hwlib::cout << int(currentNote) << "\n" << int(lastNote) << "\n" << iteration << "\n";
             if (currentNote > lastNote && iteration < 10) {
                 currentFreq += (currentNote - lastNote) / 10;
@@ -70,7 +70,7 @@ void glissando::update() {
         iteration = 0;
     }
 
-    hwlib::cout << "i" << iteration << "\n" << int(currentFreq) << "\n";
+//    hwlib::cout << "i" << iteration << "\n" << int(currentFreq) << "\n";
 //    hwlib::cout <<
     vibrato1.setFreq(currentFreq);
 }
