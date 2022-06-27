@@ -21,7 +21,7 @@ namespace effects {
     public:
         glissando(effects::vibrato& vibrato1);
 
-        void setAll(const float& currentNote_p, const float& lastNote_p, const bool& glissandoOn_p, int glissandoTime_p);
+        void setAll(const float& currentNote_p, const float& lastNote_p, const bool& glissandoOn_p, const int& glissandoTime_p);
 //        , int glissandoCooldown_p
 
         void update();

@@ -1,8 +1,10 @@
 #include "ADCHIP.hpp"
 #include "hwlib.hpp"
 #include "keyboard.hpp"
-#include "vector"
 #include "numkeys.hpp"
+#include "vibrato.hpp"
+#include "phaseVibrato.hpp"
+#include "glissando.hpp"
 
 #ifndef SYNTHESIZER_HPP
 #define SYNTHESIZER_HPP
@@ -13,9 +15,9 @@ namespace synthesizer {
         soundchip::soundchip& chip;
         keyboard::keyboard& keyboard;
 
-        effects::vibrato& vibrato1;
-        effects::phaseVibrato& phaseVibrato1;
-        effects::glissando& glissando1;
+        effects::phaseVibrato phaseVibrato1;
+        effects::vibrato vibrato1;
+        effects::glissando glissando1;
 
         const float noteA4 = 440.0;
         const float noteBb4 = 466.2;
@@ -43,9 +45,9 @@ namespace synthesizer {
         float lastNote = 1000;
         int currentPhase = 0;
 
-        std::array<bool, numKeys> keyStates;
+        std::array<bool, NUMKEYS> keyStates;
 
-//        std::array<bool, numKeys> usedKeys;
+//        std::array<bool, NUMKEYS> usedKeys;
 
         void checkNote();
 

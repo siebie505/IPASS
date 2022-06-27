@@ -40,9 +40,10 @@ void glissando::update() {
     vibrato1.setFreq(currentFreq);
 }
 
-void glissando::setAll(const float& currentNote_p, const float& lastNote_p, const bool &glissandoOn_p, int glissandoTime_p, int glissandoCooldown_p) {
+void glissando::setAll(const float& currentNote_p, const float& lastNote_p, const bool &glissandoOn_p, const int& glissandoTime_p) {
+//    , int glissandoCooldown_p
     currentNote = currentNote_p;
-    lastNote - lastNote_p;
+    lastNote = lastNote_p;
     glissandoOn = glissandoOn_p;
 //    glissandoCooldown = glissandoCooldown_p;
     glissandoTime = glissandoTime_p;

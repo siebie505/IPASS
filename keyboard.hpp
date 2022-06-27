@@ -13,7 +13,7 @@ namespace keyboard {
 
         virtual void checkActiveKeys();
     public:
-        explicit keyboard();
+        explicit keyboard() {}
 
         virtual void update() = 0;
 

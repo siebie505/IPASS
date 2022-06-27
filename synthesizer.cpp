@@ -125,7 +125,10 @@ void synthesizer::synthesizer::update() {
     lastNote = currentNote;
 }
 
-synthesizer::synthesizer::synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys) : chip(chip), keyboard(keys), phaseVibrato1(chip), vibrato1(phaseVibrato1), glissando1(phaseVibrato1) {
+synthesizer::synthesizer::synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys) : chip(chip), keyboard(keys),
+                                                                                              phaseVibrato1(chip),
+                                                                                              vibrato1(chip),
+                                                                                              glissando1(vibrato1) {
 }
 
 void synthesizer::synthesizer::setPhase(const int& phase_deg) {
