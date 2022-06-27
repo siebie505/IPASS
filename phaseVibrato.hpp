@@ -26,7 +26,9 @@ namespace effects {
     public:
         phaseVibrato(soundchip::soundchip& chip);
 
-        void setAll(const int& phase_p, const bool& phaseVibratoOn_p, const int& phaseVibratoSpeed_p, const int& phaseVibratoDepth_p);
+        void set(const bool& phaseVibratoOn_p, const int& phaseVibratoSpeed_p, const int& phaseVibratoDepth_p);
+
+        void setPhase(const int& phase_p);
 
         void update();
     };

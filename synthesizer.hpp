@@ -38,6 +38,7 @@ namespace synthesizer {
         float lastNote = -1;
         float busyNote = -1;
         int currentPhase = 0;
+        int lastPhase = -1;
 
         std::array<bool, NUMKEYS> keyStates;
 
@@ -66,6 +67,12 @@ namespace synthesizer {
         void enablePhaseVibrato(const int& depth, const int& speed);
 
         void disablePhaseVibrato();
+
+        void playMajor(const float& startNote = noteC5);
+        void playMinor(const float& startNote = noteC5);
+        void playChromatic(const float& startNote = noteC5);
+        void soundEffect();
+        void random();
 
     };
 }
