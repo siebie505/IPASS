@@ -29,7 +29,7 @@ namespace effects {
     public:
         vibrato(soundchip::soundchip& chip);
 
-        void setAll(const float &freq_p, const bool &vibrato_p, const int &phaseVibrato_p, const int& vibratoSpeed_p);
+        void set(const bool &vibrato_p, const int &phaseVibrato_p, const int& vibratoSpeed_p);
 
         void setFreq(const float& freq_p);
 

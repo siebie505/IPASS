@@ -10,6 +10,7 @@ namespace effects {
     private:
         effects::vibrato& vibrato1;
         bool glissandoOn = false;
+        bool glissandoDone = false;
         int glissandoTime = 5;
 //        int glissandoCooldown = 5;
         float currentNote = 1000;
@@ -21,7 +22,9 @@ namespace effects {
     public:
         glissando(effects::vibrato& vibrato1);
 
-        void setAll(const float& currentNote_p, const float& lastNote_p, const bool& glissandoOn_p, const int& glissandoTime_p);
+        void set(const bool& glissandoOn_p, const int& glissandoTime_p);
+        void setNotes(const float& currentNote_p, const float& lastNote_p);
+        bool getGlissandoDone();
 //        , int glissandoCooldown_p
 
         void update();

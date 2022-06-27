@@ -43,64 +43,20 @@ void synthesizer::synthesizer::checkNote() {
         }
     }
 
-    switch(currentKey) {
-        case 0 :
-            currentNote = noteC5;
-            chip.enableOutput();
-            break;
-        case 1 :
-            currentNote = noteDb5;
-            chip.enableOutput();
-            break;
-        case 2 :
-            currentNote = noteD5;
-            chip.enableOutput();
-            break;
-        case 3 :
-            currentNote = noteEb5;
-            chip.enableOutput();
-            break;
-        case 4 :
-            currentNote = noteE5;
-            chip.enableOutput();
-            break;
-        case 5 :
-            currentNote = noteF5;
-            chip.enableOutput();
-            break;
-        case 6 :
-            currentNote = noteGb5;
-            chip.enableOutput();
-            break;
-        case 7 :
-            currentNote = noteG5;
-            chip.enableOutput();
-            break;
-        case 8 :
-            currentNote = noteAb5;
-            chip.enableOutput();
-            break;
-        case 9 :
-            currentNote = noteA4 * 2; // octaaf hoger dan A4
-            chip.enableOutput();
-            break;
-        case 10 :
-            currentNote = noteBb4 * 2; // octaaf hoger dan Bb4
-            chip.enableOutput();
-            break;
-        case 11 :
-            currentNote = noteB4 * 2; // octaaf hoger dan B4
-            chip.enableOutput();
-            break;
-        case 12 :
-            currentNote = noteC5 * 2; // octaaf hoger dan C5
-            chip.enableOutput();
-            break;
-        default:
-            currentNote = -1;
-            chip.disableOutput();
-            break;
+    if(currentKey + keyboard.getStartNoteNumber() >= int(noteArray.size())) {
+        chip.disableOutput();
+        currentNote = -1;
+        // error
     }
+    else if(currentKey == -1) {
+        currentNote = -1;
+        chip.disableOutput();
+    }
+    else {
+        currentNote = noteArray[currentKey + keyboard.getStartNoteNumber()];
+        chip.enableOutput();
+    }
+
 }
 
 void synthesizer::synthesizer::update() {
@@ -110,19 +66,35 @@ void synthesizer::synthesizer::update() {
 
     checkNote();
 
-    glissando1.setAll(currentNote, lastNote, glissando, glissandoTime);
-//    glissandoCooldown
-    vibrato1.setAll(currentNote, vibrato, vibratoSpeed, vibratoDepth);
+//    hwlib::cout << int(currentNote) << "\n";
+    if(currentNote != lastNote && !noteSet) {
+        glissando1.setNotes(currentNote, lastNote);
+        busyNote = currentNote;
+        noteSet = true;
 
-    phaseVibrato1.setAll(currentPhase, phaseVibrato, phaseVibratoSpeed, phaseVibratoDepth);
+    }
+
+    glissando1.set(glissando, glissandoTime);
+//    glissandoCooldown
+    vibrato1.set(vibrato, vibratoSpeed, vibratoDepth);
+
+//    phaseVibrato1.setAll(currentPhase, phaseVibrato, phaseVibratoSpeed, phaseVibratoDepth);
 
 
     glissando1.update();
     vibrato1.update();
     phaseVibrato1.update();
 
+    glissandoDone = glissando1.getGlissandoDone();
+    if(! glissando) {
+        lastNote = currentNote;
+        noteSet = false;
+    }
+    else if(glissandoDone) {
+        lastNote = busyNote;
+        noteSet = false;
+    }
 
-    lastNote = currentNote;
 }
 
 synthesizer::synthesizer::synthesizer(soundchip::soundchip& chip, keyboard::keyboard& keys) : chip(chip), keyboard(keys),

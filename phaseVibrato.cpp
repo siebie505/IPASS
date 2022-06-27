@@ -1,4 +1,5 @@
 #include "phaseVibrato.hpp"
+#include "hwlib.hpp"
 
 using namespace effects;
 
@@ -19,6 +20,7 @@ void phaseVibrato::update() {
 //                    incrementStartTime = hwlib::now_us();
                     currentPhase++;
                     iteratieIncrement++;
+                    timeSinceLastUpdate = hwlib::now_us();
                 }
                 break;
             case 1 :
@@ -30,6 +32,7 @@ void phaseVibrato::update() {
 //                    decrementStartTime = hwlib::now_us();
                     currentPhase--;
                     iteratieDecrement++;
+                    timeSinceLastUpdate = hwlib::now_us();
                 }
                 break;
             case 2 :
@@ -37,19 +40,21 @@ void phaseVibrato::update() {
                     state = 2;
 //                    initialClimbStartTime = hwlib::now_us();
                     iteratieIncrement = 0;
-                } else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
+                }
+                else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
 //                    incrementStartTime = hwlib::now_us();
                     currentPhase++;
                     iteratieIncrement++;
+                    timeSinceLastUpdate = hwlib::now_us();
                 }
                 break;
         }
     }
     else {
         currentPhase = startPhase;
+
+        chip.setPhase(currentPhase);
     }
-    timeSinceLastUpdate = hwlib::now_us();
-    chip.setPhase(currentPhase);
 }
 
 void phaseVibrato::setAll(const int& phase_p, const bool &phaseVibratoOn_p, const int &phaseVibratoSpeed_p, const int &phaseVibratoDepth_p) {

@@ -1,7 +1,7 @@
 #include "keyboardButtons.hpp"
 #include "hwlib.hpp"
 
-keyboard::keyboardButtons::keyboardButtons(std::array<hwlib::pin_in *, NUMKEYS>& keys) : keyboard(), keys(keys) {
+keyboard::keyboardButtons::keyboardButtons(std::array<hwlib::pin_in *, NUMKEYS>& keys, const float& startNote_hz) : keyboard(startNote_hz), keys(keys) {
 }
 
 void keyboard::keyboardButtons::checkActiveKeys() {
@@ -13,18 +13,6 @@ void keyboard::keyboardButtons::checkActiveKeys() {
 }
 
 void keyboard::keyboardButtons::update() {
-    //    long long currTime = hwlib::now_us();
-//    switch(state) {
-//        case state1:
-//            if(currTime - state1StartTime > threshold) {
-//                state = state2;
-//                state2StartTime = hwlib::now_us();
-//                state2Do.exec();
-//            }
-//            break;
-//        case state2:
-//            break;
-//    }
     checkActiveKeys();
 }
 

@@ -38,14 +38,14 @@ class ad9833 : public soundchip {
         const uint16_t phaseReg1Bit = 0b1110000000000000;
 
         const float twoPi = 6.28319;
-        const long long twoPow32 = 4294967296;
-        const unsigned int twoPow12 = 4096;
-        const unsigned int lsbMaskFreq = 16383; // 0b11111111111111
-        const unsigned int msbMaskFreq = 268419072; // 0b1111111111111100000000000000
-        const unsigned int maskPhase = 4095; // 0b111111111111
-        const unsigned int lsbMaskControl = 255; // 0b11111111
-        const unsigned int msbMaskControl = 65280; // 0b1111111100000000
-        const unsigned int totalDegrees = 360;
+        const long long twoPow32 = 268435456;
+        const uint16_t twoPow12 = 4096;
+        const int lsbMaskFreq = 0b11111111111111; // 0b11111111111111 ofwel 16383
+        const int msbMaskFreq = 0b1111111111111100000000000000; // 0b1111111111111100000000000000 ofwfel 268419072
+        const int maskPhase = 0b111111111111; // 0b111111111111 ofwel 4095
+        const int lsbMaskControl = 0b11111111; // 0b11111111 ofwel 255
+        const int msbMaskControl = 0b1111111100000000; // 0b1111111100000000 ofwel 65280
+        const int totalDegrees = 360;
 
         hwlib::spi_bus_bit_banged_sclk_mosi_miso& spi_bus;
 
@@ -65,9 +65,9 @@ class ad9833 : public soundchip {
     public:
         ad9833(hwlib::pin_out& enablePin_p, hwlib::pin_out& clockPin_p, hwlib::spi_bus_bit_banged_sclk_mosi_miso& spi_bus, const int& masterClock); // maak pins aan met de goede types, zet de enable pin hoog
 
-        void setFreq(const float& freq, const int& registerNum = 0);
+        void setFreq(const float& freq, const int& registerNum);
 
-        void setPhase(const int& phase, const int& registerNum = 0);
+        void setPhase(const int& phase, const int& registerNum);
 
         void setFreq(const float& freqHz) override;
 
@@ -75,7 +75,7 @@ class ad9833 : public soundchip {
 
         void setWave (const waveType& wavetype_p) override;
 
-        void enableOutput (const int& freqReg = 0, const int& phaseReg = 0);
+        void enableOutput (const int& freqReg, const int& phaseReg);
 
         void enableOutput() override;
 

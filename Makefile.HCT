@@ -12,7 +12,7 @@
 SOURCES := ADCHIP.cpp synthesizer.cpp keyboardButtons.cpp vibrato.cpp phaseVibrato.cpp glissando.cpp
 
 # header files in this project
-HEADERS := ADCHIP.hpp soundchip.hpp synthesizer.hpp keyboard.hpp pin_in_invert.hpp keyboardButtons.hpp vibrato.hpp glissando.hpp phaseVibrato.hpp
+HEADERS := ADCHIP.hpp soundchip.hpp synthesizer.hpp keyboard.hpp pin_in_invert.hpp keyboardButtons.hpp vibrato.hpp glissando.hpp phaseVibrato.hpp numkeys.hpp
 
 
 # other places to look for files for this project

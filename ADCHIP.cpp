@@ -157,9 +157,9 @@ void ad9833::writeFreq(const int& registerNum) {
         freqHz = freqReg1;
     }
 
-    int freqValue = freqHz * twoPow32 / masterClock;
-    freqBytesLSB |= (freqValue & lsbMaskFreq);
-    freqBytesMSB |= ((freqValue & msbMaskFreq) >> 14);
+    long long freqValue = freqHz * twoPow32 / masterClock;
+    freqBytesLSB |= (int(freqValue) & lsbMaskFreq);
+    freqBytesMSB |= ((int(freqValue) & msbMaskFreq) >> 14);
 
     writeTwoBytes(freqBytesLSB);
     writeTwoBytes(freqBytesMSB);

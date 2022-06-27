@@ -1,5 +1,4 @@
 #include "soundchip.hpp"
-#include "hwlib.hpp"
 
 #ifndef PHASEVIBRATO_HPP
 #define PHASEVIBRATO_HPP

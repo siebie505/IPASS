@@ -1,5 +1,6 @@
 #include "hwlib.hpp"
 #include "keyboard.hpp"
+#include "notes.hpp"
 
 #include "numkeys.hpp"
 
@@ -14,7 +15,7 @@ namespace keyboard {
         void checkActiveKeys() override;
 
     public:
-        explicit keyboardButtons(std::array<hwlib::pin_in *, NUMKEYS>& keys);
+        keyboardButtons(std::array<hwlib::pin_in *, NUMKEYS>& keys, const float& startNote_hz = noteC4);
 
         void update() override;
 

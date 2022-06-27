@@ -6,13 +6,14 @@
 #include "pin_in_invert.hpp"
 #include "keyboardButtons.hpp"
 #include "numkeys.hpp"
+#include "notes.hpp"
 
 
 
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
 
-    auto pinEnable = hwlib::target::pin_out(3, 0); // pin 25, oranje
+    auto pinEnable = hwlib::target::pin_out(3, 0); // pin 25, wit
     auto pinClock = hwlib::target::pin_out(3, 1); // pin 26, groen
     auto pinData = hwlib::target::pin_out(0, 15); // pin 24, blauw
     const int masterClock = 25000000;
@@ -54,13 +55,15 @@ int main() {
     auto key13 = pin_in_invert(key13ActiveLow);
 
     std::array<hwlib::pin_in*, NUMKEYS> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
+//    std::array<hwlib::pin_in*, NUMKEYS> keys = {&key1};
 
-
-    auto keyboard = keyboard::keyboardButtons(keys);
+    auto keyboard = keyboard::keyboardButtons(keys, noteC5); // startNoot mag vanaf C0 tot en met het aantal toetsen dat je hebt terug vanaf B8, dus als je 13 toetsen hebt ga je 13 noten terug vanaf B8 (dus B7)
     auto synth = synthesizer::synthesizer(ad9833, keyboard);
 
     synth.setWave(SINE);
-//    synth.enableGlissando();
+    synth.enableVibrato(10, 2);
+//    synth.enablePhaseVibrato(5, 2);
+//    synth.enableGlissando(0.3);
 
     std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
 
