@@ -62,14 +62,22 @@ int main() {
 
     synth.setWave(SINE);
 //    synth.enableVibrato(50, 5);
-    synth.enablePhaseVibrato(200, 20);
-//    synth.enableGlissando(1);
+//    synth.enablePhaseVibrato(200, 20);
+//    synth.enableGlissando(0.3);
 
-    std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
+//    synth.playMajor();
+//    synth.playMinor();
+//    synth.playChromatic();
+//    synth.soundEffect();
+//    while(true) {
+//        synth.random();
+//    }
 
-    for(;;) {
-        for(synthesizer::synthesizer* synthCurrent : synths) {
-            synthCurrent->update();
-        }
-    }
+//    std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
+//
+//    for(;;) {
+//        for(synthesizer::synthesizer* synthCurrent : synths) {
+//            synthCurrent->update();
+//        }
+//    }
 }

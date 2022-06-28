@@ -53,7 +53,7 @@ void phaseVibrato::update() {
     else {
         currentPhase = startPhase;
     }
-    hwlib::cout << currentPhase << "\n";
+//    hwlib::cout << currentPhase << "\n";
     chip.setPhase(currentPhase);
 }
 

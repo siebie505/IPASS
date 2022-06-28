@@ -117,6 +117,7 @@ void synthesizer::synthesizer::setWave(const waveType& wavetype) {
 }
 
 void synthesizer::synthesizer::playMajor(const float& startNote) {
+    int wait_time = 500;
     unsigned int startNoteIndex = 0;
     for(unsigned int i = 0; i < noteArray.size(); i++) {
         if(noteArray[i] == startNote) {
@@ -125,35 +126,35 @@ void synthesizer::synthesizer::playMajor(const float& startNote) {
     }
     chip.setFreq(noteArray[startNoteIndex]);
     chip.enableOutput();
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 2]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 4]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 5]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 7]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 9]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 11]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 12]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 11]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 9]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 7]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 5]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 4]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 2]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
 
     chip.disableOutput();
 }
@@ -174,7 +175,8 @@ void synthesizer::synthesizer::random() {
 }
 
 
-void synthesizer::synthesizer::playMinor(const float& startNote) {
+void synthesizer::synthesizer::playChromatic(const float& startNote) {
+    int wait_time = 500;
     unsigned int startNoteIndex = 0;
     for(unsigned int i = 0; i < noteArray.size(); i++) {
         if(noteArray[i] == startNote) {
@@ -183,71 +185,72 @@ void synthesizer::synthesizer::playMinor(const float& startNote) {
     }
     chip.setFreq(noteArray[startNoteIndex]);
     chip.enableOutput();
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 1]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 2]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 3]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 4]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 5]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 6]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 7]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 8]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 9]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 10]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 11]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.setFreq(noteArray[startNoteIndex + 12]);
-    hwlib::wait_ms(50);
+    hwlib::wait_ms(wait_time);
     chip.disableOutput();
 }
 
-void synthesizer::synthesizer::playChromatic(const float& startNote) {
+void synthesizer::synthesizer::playMinor(const float& startNote) {
+    int wait_time = 500;
     unsigned int startNoteIndex = 0;
     for(unsigned int i = 0; i < noteArray.size(); i++) {
         if(noteArray[i] == startNote) {
             startNoteIndex = i;
         }
     }
-    setFreq(noteArray[startNoteIndex]);
-    chip.enableOutput();
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 2]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 3]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 5]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 7]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 8]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 10]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 12]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 10]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 8]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 7]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 5]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 3]);
-    hwlib::wait_ms(50);
-    chip.setFreq(noteArray[startNoteIndex + 2]);
-    hwlib::wait_ms(50);
     chip.setFreq(noteArray[startNoteIndex]);
-    hwlib::wait_ms(50);
+    chip.enableOutput();
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 2]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 3]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 5]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 7]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 8]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 10]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 12]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 10]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 8]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 7]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 5]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 3]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex + 2]);
+    hwlib::wait_ms(wait_time);
+    chip.setFreq(noteArray[startNoteIndex]);
+    hwlib::wait_ms(wait_time);
     chip.disableOutput();
 }
