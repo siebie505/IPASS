@@ -74,7 +74,7 @@ void ad9833::setWave(const waveType& wavetype_p) {
     wavetype = wavetype_p;
     dacOff = false;
     if(wavetype_p == SQUARE || wavetype_p == HALF_SQUARE) {
-        dacOff = true;
+        dacOff = true; // The DAC can be turned off if using a square wave
     }
     writeControl();
 }
@@ -157,7 +157,7 @@ void ad9833::writeFreq(const int& registerNum) {
         freqHz = freqReg1;
     }
 
-    long long freqValue = freqHz * twoPow32 / masterClock;
+    long long freqValue = freqHz * twoPow28 / masterClock;
     freqBytesLSB |= (int(freqValue) & lsbMaskFreq);
     freqBytesMSB |= ((int(freqValue) & msbMaskFreq) >> 14);
 
@@ -179,7 +179,7 @@ void ad9833::writePhase(const int& registerNum) {
 
 
     double slope = 1.0 / totalDegrees;
-    float phaseMapped = slope * phaseDeg * 4.0;
+    float phaseMapped = slope * phaseDeg * 4.0; // Map the phase value from a vale in degrees (0-360) to a value the chip accepts
 
 
     int phaseValue = phaseMapped * twoPow12 / twoPi;

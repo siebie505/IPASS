@@ -24,9 +24,7 @@ void synthesizer::synthesizer::disablePhaseVibrato() {
 
 
 void synthesizer::synthesizer::enableGlissando(const int& glissandoTime_p) {
-//    const int& glissandoCooldown_p
     glissandoTime = glissandoTime_p;
-//    glissandoCooldown = glissandoCooldown_p;
     glissando = true;
 }
 
@@ -37,20 +35,19 @@ void synthesizer::synthesizer::disableGlissando() {
 void synthesizer::synthesizer::checkNote() {
     int currentKey = -1;
     for(unsigned int i = 0; i < NUMKEYS; i++) {
-//        if (keyStates[i] == true ) {
         if (keyStates[i] == true && usedKeys[i] == false) {
         currentKey = i;
-        keyboard.setKeyUsed(i);
+        keyboard.setKeyUsed(i); // Tell the keyboard that this key is playing a note
         break;
         }
     }
 
-    if(currentKey + keyboard.getStartNoteNumber() >= int(noteArray.size())) {
+    if(currentKey + keyboard.getStartNoteNumber() >= int(noteArray.size())) { // If the current key tries to play a note out of range
         chip.disableOutput();
         currentNote = -1;
         // error
     }
-    else if(currentKey == -1) {
+    else if(currentKey == -1) { // If no key is being pressed
         currentNote = -1;
         chip.disableOutput();
     }
@@ -62,41 +59,43 @@ void synthesizer::synthesizer::checkNote() {
 }
 
 void synthesizer::synthesizer::update() {
+    // Check which keys are pressed and also check which keys are already playing notes
     keyStates = keyboard.getActiveKeys();
     usedKeys = keyboard.getUsedKeys();
 
+    // Sort out which note to play based on which keys are pressed and which are already playing notes
     checkNote();
 
-//    hwlib::cout << int(currentNote) << "\n";
-    if(currentNote != lastNote && !noteSet) {
+    if(currentNote != lastNote && !noteSet) { // If a new note is being played and it has not already been set
         glissando1.setNotes(currentNote, lastNote);
         busyNote = currentNote;
         noteSet = true;
 
     }
 
+    // Send all the effect parameters to the effects
     glissando1.set(glissando, glissandoTime);
-//    glissandoCooldown
     vibrato1.set(vibrato, vibratoSpeed, vibratoDepth);
-
     phaseVibrato1.set(phaseVibrato, phaseVibratoSpeed, phaseVibratoDepth);
 
 
+    // Update all the effects
     glissando1.update();
     vibrato1.update();
     phaseVibrato1.update();
 
     glissandoDone = glissando1.getGlissandoDone();
-    if(! glissando) {
+
+    if(! glissando) { // If glissando is off
         lastNote = currentNote;
         noteSet = false;
     }
-    else if(glissandoDone) {
+    else if(glissandoDone) { // If the glissando effect is finished
         lastNote = busyNote;
         noteSet = false;
     }
 
-    if(lastPhase != currentPhase) {
+    if(lastPhase != currentPhase) { // If the phase has actually changed
         phaseVibrato1.setPhase(currentPhase);
     }
 

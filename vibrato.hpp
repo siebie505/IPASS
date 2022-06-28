@@ -47,8 +47,8 @@ namespace effects {
         /// The part of the vibrato wave where it is currently
         int state = 0;
 
-        /// How long ago the latest step in the vibrato effect was
-        long long timeSinceLastUpdate = 0;
+        /// The time when the latest step in the vibrato effect was
+        long long timeLastUpdate = 0;
 
     public:
         /// A constructor which requires a soundchip to send the information to

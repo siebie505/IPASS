@@ -18,48 +18,41 @@ void vibrato::update() {
 
         long long currTime = hwlib::now_us();
         long long timeBetweenUpdates = (1 / (vibratoSpeed * 1000000)) / (4 * vibratoDepth);
-//        hwlib::cout << "s"<< "t"<< "a"<< "t"<< "e"<< ":"<< " " << state << "\n";
         switch(state) {
             case 0 :
-                if (iteratieIncrement > vibratoDepth) {
-//                    hwlib::cout << "!" << "\n";
+                // The first (rising) part of the vibrato
+                if (iterationIncrement > vibratoDepth) { // If this part of the vibrato is finished
                     state = 1;
-                    //                    fallStartTime = hwlib::now_us();
-                    iteratieDecrement = 0;
-                } else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-//                    hwlib::cout << "?" << "\n";
-                    //                    incrementStartTime = hwlib::now_us();
+                    iterationDecrement = 0;
+                } else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If enough time has passed since the previous update
                     currentFreq++;
-                    iteratieIncrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationIncrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
 
             case 1:
-//                hwlib::cout << "h" << "\n";
-                if (iteratieDecrement > vibratoDepth * 2) {
+                // The second (falling) part of the vibrato
+                if (iterationDecrement > vibratoDepth * 2) { // If this part of the vibrato is finished
                     state = 2;
-    //                    secondClimbStartTime = hwlib::now_us();
-                    iteratieIncrement = 0;
+                    iterationIncrement = 0;
                 }
-                else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-    //                    decrementStartTime = hwlib::now_us();
+                else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If enough time has passed since the previous update
                     currentFreq--;
-                    iteratieDecrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationDecrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
             case 2 :
-                if (iteratieIncrement > vibratoDepth) {
+                // The final (rising back to the start frequency) part of the vibrato
+                if (iterationIncrement > vibratoDepth) { // If this part of the vibrato is finished
                     state = 0;
-    //                    initialClimbStartTime = hwlib::now_us();
-                    iteratieIncrement = 0;
+                    iterationIncrement = 0;
                 }
-                else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-    //                    incrementStartTime = hwlib::now_us();
+                else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If enough time has passed since the previous update
                     currentFreq++;
-                    iteratieIncrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationIncrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
 
@@ -69,15 +62,13 @@ void vibrato::update() {
     else {
         currentFreq = startFreq;
     }
-//    hwlib::cout << "c" << "u" << "r" << "r"<< ":" << " "  << int(currentFreq) << "\n";
     chip.setFreq(currentFreq);
 }
 
 void vibrato::setFreq(const float &freq_p) {
     startFreq = freq_p;
     currentFreq = startFreq;
-    iteratieDecrement = 0;
-    iteratieDecrement = 0;
+    iterationDecrement = 0;
+    iterationDecrement = 0;
     state = 0;
-//    initialClimbStartTime = hwlib::now_us();
 }

@@ -12,40 +12,39 @@ void phaseVibrato::update() {
 
         switch(state) {
             case 0 :
-                if (iteratieIncrement > phaseVibratoDepth) {
+                // The first (rising) part of the phase vibrato
+                if (iterationIncrement > phaseVibratoDepth) { // If this part is finished
                     state = 1;
-//                    fallStartTime = hwlib::now_us();
-                    iteratieDecrement = 0;
-                } else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-//                    incrementStartTime = hwlib::now_us();
+                    iterationDecrement = 0;
+                }
+                else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If the previous update was long enough ago
                     currentPhase++;
-                    iteratieIncrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationIncrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
             case 1 :
-                if (iteratieDecrement > phaseVibratoDepth * 2) {
+                // The second (falling) part of the phase vibrato
+                if (iterationDecrement > phaseVibratoDepth * 2) { // If this part is finished
                     state = 2;
-//                    secondClimbStartTime = hwlib::now_us();
-                    iteratieIncrement = 0;
-                } else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-//                    decrementStartTime = hwlib::now_us();
+                    iterationIncrement = 0;
+                }
+                else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If the previous update was long enough ago
                     currentPhase--;
-                    iteratieDecrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationDecrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
             case 2 :
-                if (iteratieIncrement > phaseVibratoDepth) {
+                // The final (rising back to the original phase) part of the phase vibrato
+                if (iterationIncrement > phaseVibratoDepth) {
                     state = 0;
-//                    initialClimbStartTime = hwlib::now_us();
-                    iteratieIncrement = 0;
+                    iterationIncrement = 0;
                 }
-                else if (currTime - timeSinceLastUpdate > timeBetweenUpdates) {
-//                    incrementStartTime = hwlib::now_us();
+                else if (currTime - timeLastUpdate > timeBetweenUpdates) { // If the previous update was long enough ago
                     currentPhase++;
-                    iteratieIncrement++;
-                    timeSinceLastUpdate = hwlib::now_us();
+                    iterationIncrement++;
+                    timeLastUpdate = hwlib::now_us();
                 }
                 break;
         }
@@ -53,7 +52,6 @@ void phaseVibrato::update() {
     else {
         currentPhase = startPhase;
     }
-//    hwlib::cout << currentPhase << "\n";
     chip.setPhase(currentPhase);
 }
 
@@ -68,8 +66,7 @@ void phaseVibrato::setPhase(const int& phase_p) {
     startPhase = phase_p;
     currentPhase = startPhase;
     state = 0;
-//    initialClimbStartTime = hwlib::now_us();
-    timeSinceLastUpdate = 0;
-    iteratieIncrement = 0;
-    iteratieDecrement = 0;
+    timeLastUpdate = 0;
+    iterationIncrement = 0;
+    iterationDecrement = 0;
 }

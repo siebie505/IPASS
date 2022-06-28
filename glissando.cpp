@@ -11,56 +11,42 @@ glissando::glissando(effects::vibrato &vibrato1) : vibrato1(vibrato1) {
 void glissando::update() {
 
     long long currTime = hwlib::now_us();
-//    long long timeBetweenUpdates = (1 / vibratoSpeed) / (4 * vibratoDepth);
-//    int glissandoSteps;
-//    if(currentNote > lastNote) {
-//        glissandoSteps = currentNote - lastNote;
-//    }
-//    else {
-//        glissandoSteps = lastNote - currentNote;
-//    }
     float timeBetweenUpdates_us = (glissandoTime * 1000000) / 10;
 
-    if(lastNote == -1 || currentNote == -1) {
+    if(lastNote == -1 || currentNote == -1) { // If there is no last note or no current note
         currentFreq = currentNote;
         iteration = 10;
     }
-    if(glissandoDone) {
+    if(glissandoDone) { // If the glissando effect has finished
         lastNote = currentNote;
         currentFreq = currentNote;
     }
     else if(glissandoOn) {
-//        hwlib::cout << int(lastNote) << "\n" << int(currentNote) << "\n";
 
-        if(lastNote == currentNote || lastNote == -1) { // als de toets ingehouden wordt op dezelfde noot, of als er hiervoor geen knop ingedrukt was(lastnote = -1 geeft aan dat er hiervoor geen note was)
+        if(lastNote == currentNote || lastNote == -1) { // If the current note is being held, or there is no previous note
             currentFreq = currentNote;
-//            iteration = 0;
-//            hwlib::cout << 1 << "\n";
             glissandoDone = true;
         }
-        else if(iteration == 0) {
+        else if(iteration == 0) { // If the glissando effect has yet to be started
             currentFreq = lastNote;
             iteration++;
-//            hwlib::cout << 2 << "\n";
         }
 
-        else if(currTime - timeSinceLastUpdate > timeBetweenUpdates_us){
-//            hwlib::cout << 3 << "\n";
-//            hwlib::cout << int(currentNote) << "\n" << int(lastNote) << "\n" << iteration << "\n";
-            if (currentNote > lastNote && iteration < 10) {
+        else if(currTime - timeLastUpdate > timeBetweenUpdates_us){ // If the last step was long enough ago
+            if (currentNote > lastNote && iteration < 10) { // If the new note is higher than the previous one and the effect is not yet finished
                 currentFreq += (currentNote - lastNote) / 10;
                 iteration++;
-                timeSinceLastUpdate = hwlib::now_us();
+                timeLastUpdate = hwlib::now_us();
             }
-            else if(currentNote > lastNote && iteration ==  10) {
+            else if(currentNote > lastNote && iteration ==  10) { // If the new note is higher than the previous one and the effect is finished
                 glissandoDone = true;
             }
-            else if (lastNote > currentNote && iteration < 10) {
+            else if (lastNote > currentNote && iteration < 10) { // If the new note is lower than the previous one and the effect is not yet finished
                 currentFreq -= (lastNote - currentNote) / 10;
                 iteration++;
-                timeSinceLastUpdate = hwlib::now_us();
+                timeLastUpdate = hwlib::now_us();
             }
-            else if(lastNote > currentNote && iteration == 10) {
+            else if(lastNote > currentNote && iteration == 10) { // If the new note is lower than the previous one and the effect is finished
                 glissandoDone = true;
             }
         }
@@ -70,9 +56,7 @@ void glissando::update() {
         iteration = 0;
     }
 
-//    hwlib::cout << "i" << iteration << "\n" << int(currentFreq) << "\n";
-//    hwlib::cout <<
-    if(currentFreq != lastFreq) {
+    if(currentFreq != lastFreq) { // Only update the frequency if it has actually been altered, otherwise the vibrato effect will constantly restart
         vibrato1.setFreq(currentFreq);
     }
     lastFreq = currentFreq;
@@ -82,17 +66,13 @@ void glissando::setNotes(const float& currentNote_p, const float& lastNote_p) {
     glissandoDone = false;
     currentNote = currentNote_p;
     lastNote = lastNote_p;
-    timeSinceLastUpdate = 0;
+    timeLastUpdate = 0;
     iteration = 0;
 }
 
 void glissando::set(const bool &glissandoOn_p, const int& glissandoTime_p) {
-//    , int glissandoCooldown_p
-
     glissandoOn = glissandoOn_p;
-//    glissandoCooldown = glissandoCooldown_p;
     glissandoTime = glissandoTime_p;
-//    iteration = 0;
 
 }
 

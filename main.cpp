@@ -11,7 +11,9 @@
 
 
 int main() {
+    // Disable the watchdog
     WDT->WDT_MR = WDT_MR_WDDIS;
+
 
     auto pinEnable = hwlib::target::pin_out(3, 0);
     auto pinClock = hwlib::target::pin_out(3, 1);
@@ -56,9 +58,8 @@ int main() {
     auto key13 = pin_in_invert(key13ActiveLow);
 
     std::array<hwlib::pin_in*, NUMKEYS> keys = {&key1, &key2, &key3, &key4, &key5, &key6, &key7, &key8, &key9, &key10, &key11, &key12, &key13};
-//    std::array<hwlib::pin_in*, NUMKEYS> keys = {&key1};
 
-    auto keyboard = keyboard::keyboardButtons(keys, noteC5); // startNoot mag vanaf C0 tot en met het aantal toetsen dat je hebt terug vanaf B8, dus als je 13 toetsen hebt ga je 13 noten terug vanaf B8 (dus B7)
+    auto keyboard = keyboard::keyboardButtons(keys, noteC5); // startNote can be beween C0 up to and including  (the amount of keys you have) back from B8, so if you have 13 keys the max is B7 (13 back from B8)
     auto synth = synthesizer::synthesizer(ad9833, keyboard);
     auto synth2 = synthesizer::synthesizer(chip2, keyboard);
 
@@ -83,6 +84,5 @@ int main() {
         for(synthesizer::synthesizer* synthCurrent : synths) {
             synthCurrent->update();
         }
-//        keys.update();
     }
 }

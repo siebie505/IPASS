@@ -42,16 +42,16 @@ namespace effects {
         int currentPhase = 0;
 
         /// How often the phase has already incremented
-        int iteratieIncrement = 0;
+        int iterationIncrement = 0;
 
         /// How often the phase has already decremented
-        int iteratieDecrement = 0;
+        int iterationDecrement = 0;
 
         /// The current part of the modulation
         int state = 0;
 
-        /// How much time has passed since the latest increment or decrement
-        long long timeSinceLastUpdate = 0;
+        /// When the last update occurred
+        long long timeLastUpdate = 0;
     public:
         /// A constructor which requires a soundchip
         phaseVibrato(soundchip::soundchip& chip);

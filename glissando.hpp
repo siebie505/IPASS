@@ -50,8 +50,8 @@ namespace effects {
         /// How many times the frequency has been altered in this current slide
         int iteration = 0;
 
-        /// How much time (in microseconds) that has passed since the last frequency alteration
-        long long timeSinceLastUpdate = 0;
+        /// When the last step in the effect occurred
+        long long timeLastUpdate = 0;
     public:
         /// Glissando constructor that needs only a vibrato class to next pass the frequency information to
         glissando(effects::vibrato& vibrato1);
