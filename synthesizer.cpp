@@ -37,9 +37,11 @@ void synthesizer::synthesizer::disableGlissando() {
 void synthesizer::synthesizer::checkNote() {
     int currentKey = -1;
     for(unsigned int i = 0; i < NUMKEYS; i++) {
-        if (keyStates[i] == true ) {
-//            if (keyStates[i] == true && usedKeys[i] == false) {
-            currentKey = i;
+//        if (keyStates[i] == true ) {
+        if (keyStates[i] == true && usedKeys[i] == false) {
+        currentKey = i;
+        keyboard.setKeyUsed(i);
+        break;
         }
     }
 
@@ -60,9 +62,8 @@ void synthesizer::synthesizer::checkNote() {
 }
 
 void synthesizer::synthesizer::update() {
-    keyboard.update();
     keyStates = keyboard.getActiveKeys();
-//    usedKeys = keyboard.getUsedKeys();
+    usedKeys = keyboard.getUsedKeys();
 
     checkNote();
 

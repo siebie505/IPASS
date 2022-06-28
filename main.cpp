@@ -13,9 +13,10 @@
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
 
-    auto pinEnable = hwlib::target::pin_out(3, 0); // pin 25, wit
-    auto pinClock = hwlib::target::pin_out(3, 1); // pin 26, groen
-    auto pinData = hwlib::target::pin_out(0, 15); // pin 24, blauw
+    auto pinEnable = hwlib::target::pin_out(3, 0);
+    auto pinClock = hwlib::target::pin_out(3, 1);
+    auto pinData = hwlib::target::pin_out(0, 15);
+    auto pinEnable2 = hwlib::target::pin_out(1, 21);
     const int masterClock = 25000000;
 
     auto spi_bus = hwlib::spi_bus_bit_banged_sclk_mosi_miso(pinClock, pinData, hwlib::pin_in_dummy);
@@ -23,7 +24,7 @@ int main() {
     auto ad9833 = soundchip::ad9833(pinEnable, pinClock, spi_bus, masterClock);
 
 
-
+    auto chip2 = soundchip::ad9833(pinEnable2, pinClock, spi_bus, masterClock);
 
     auto key1ActiveLow = hwlib::target::pin_in(3, 2);
     auto key2ActiveLow = hwlib::target::pin_in(3, 3);
@@ -59,11 +60,13 @@ int main() {
 
     auto keyboard = keyboard::keyboardButtons(keys, noteC5); // startNoot mag vanaf C0 tot en met het aantal toetsen dat je hebt terug vanaf B8, dus als je 13 toetsen hebt ga je 13 noten terug vanaf B8 (dus B7)
     auto synth = synthesizer::synthesizer(ad9833, keyboard);
+    auto synth2 = synthesizer::synthesizer(chip2, keyboard);
 
-    synth.setWave(SINE);
-//    synth.enableVibrato(50, 5);
+    synth.setWave(SQUARE);
+//    synth.enableVibrato(20, 0.5);
 //    synth.enablePhaseVibrato(200, 20);
 //    synth.enableGlissando(0.3);
+    synth2.setWave(SQUARE);
 
 //    synth.playMajor();
 //    synth.playMinor();
@@ -73,11 +76,13 @@ int main() {
 //        synth.random();
 //    }
 
-//    std::array<synthesizer::synthesizer*, 1 > synths = {&synth};
-//
-//    for(;;) {
-//        for(synthesizer::synthesizer* synthCurrent : synths) {
-//            synthCurrent->update();
-//        }
-//    }
+    std::array<synthesizer::synthesizer*, 2 > synths = {&synth, &synth2};
+
+    for(;;) {
+        keyboard.update();
+        for(synthesizer::synthesizer* synthCurrent : synths) {
+            synthCurrent->update();
+        }
+//        keys.update();
+    }
 }

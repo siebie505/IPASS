@@ -1,3 +1,17 @@
+// Author: Siebren Bouwhuis
+// Copyright Siebren Bouwhuis 2022.
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+
+
+/// @file
+/// \brief
+/// Frequency values from all notes from C0 to and including B8, as well as an array containing all of them
+///
+
+
+
 #include <array>
 
 #ifndef NOTES_HPP

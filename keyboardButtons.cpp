@@ -13,6 +13,8 @@ void keyboard::keyboardButtons::checkActiveKeys() {
 }
 
 void keyboard::keyboardButtons::update() {
+    usedKeys.fill(0);
+
     checkActiveKeys();
 }
 
