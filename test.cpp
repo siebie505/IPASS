@@ -16,7 +16,7 @@
 //
 //    // Tests:
 //
-//    // Set numkeys in numkeys.hpp to 2, and comment out the code above this to use
+//    // Set numkeys in numkeys.hpp to 2, uncomment this file and comment out the code in main.cpp to use
 //    // Hook up the chip using pin 25 for the fsync pin, 26 for the SCLK pin and 24 for the SDATA pin along with two active-low buttons to pins 27 and 28
 //    // It is easiest to test using an oscilloscope but an app might work as well, for checking wave shapes and frequencies
 //    // To test phase you need to hook the output signal up to an oscilloscope, and use a function generator to generate a second wave with the same frequency and waveshape, then trigger on that wave.
