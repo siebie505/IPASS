@@ -26,9 +26,9 @@
 //    WDT->WDT_MR = WDT_MR_WDDIS;
 //
 //
-//    auto testPinEnable = hwlib::target::pin_out(target::pins::d25);
-//    auto testPinClock = hwlib::target::pin_out(target::pins::d26);
-//    auto testPinData = hwlib::target::pin_out(target::pins::d24);
+//    auto testPinEnable = hwlib::target::pin_out(hwlib::target::pins::d25);
+//    auto testPinClock = hwlib::target::pin_out(hwlib::target::pins::d26);
+//    auto testPinData = hwlib::target::pin_out(hwlib::target::pins::d24);
 //
 //
 //    const int testMasterClock = 25000000;
@@ -39,24 +39,30 @@
 //    testChip.setWave(SINE);
 //    testChip.setFreq(1000);
 //    testChip.enableOutput();
+//    hwlib::cout << "1k Sine wave" << "\n";
 //    hwlib::wait_ms(1000); // Play a 1k sine wave for a second
 //    testChip.setWave(TRIANGLE);
+//    hwlib::cout << "1k Triangle wave" << "\n";
 //    hwlib::wait_ms(1000); // Play a 1k triangle wave for a second
 //    testChip.setWave(SQUARE);
+//    hwlib::cout << "1k Square wave" << "\n";
 //    hwlib::wait_ms(1000); // Play a 1k square wave for a second
 //    testChip.setWave(HALF_SQUARE);
+//    hwlib::cout << "1k Half square wave" << "\n";
 //    hwlib::wait_ms(1000); // Play a 1k half square wave for a second
 //
 //    testChip.setWave(SINE);
 //
 //    for (unsigned int i = 20; i < 20000; i++) {
 //        testChip.setFreq(i); // Sweep through the entire hearable range
+//        hwlib::cout << "Frequency: " << i << "\n";
 //    }
 //
 //    testChip.setFreq(1000);
 //
 //    for (unsigned int i = 0; i < 360; i++) {
 //        testChip.setPhase(i); // Sweep through the entire phase range
+//        hwlib::cout << "Phase: "<< i << "\n";
 //    }
 //
 //    testChip.disableOutput();
@@ -65,8 +71,8 @@
 //    // Application tests
 //
 //
-//    auto testKey1ActiveLow = hwlib::target::pin_in(target::pins::d27);
-//    auto testKey2ActiveLow = hwlib::target::pin_in(target::pins::d28);
+//    auto testKey1ActiveLow = hwlib::target::pin_in(hwlib::target::pins::d27);
+//    auto testKey2ActiveLow = hwlib::target::pin_in(hwlib::target::pins::d28);
 //    auto testKey1 = pin_in_invert(testKey1ActiveLow);
 //    auto testKey2 = pin_in_invert(testKey2ActiveLow);
 //
@@ -75,12 +81,17 @@
 //    auto testKeyboard = keyboard::keyboardButtons(testKeys, noteC5);
 //    auto testSynth = synthesizer::synthesizer(testChip, testKeyboard);
 //
+//    hwlib::cout << "C major" << "\n";
 //    testSynth.playMajor(noteC4); // Play C major
+//    hwlib::cout << "C minor" << "\n";
 //    testSynth.playMinor(noteC4); // Play C minor
+//    hwlib::cout << "C chromatic" << "\n";
 //    testSynth.playChromatic(noteC4); // Play C chromatic
 //
+//    hwlib::cout << "Soundeffect" << "\n";
 //    testSynth.soundEffect(); // Play a preprogrammed sound effect
 //
+//    hwlib::cout << "Random" << "\n";
 //    for (unsigned int i = 0; i < 10; i++) {
 //        testSynth.random(); // Play 10 random notes
 //    }
@@ -89,7 +100,8 @@
 //    long long startTime = hwlib::now_us();
 //    long long currTime;
 //
-//    for (;;) { // You can play the keyboard for 10 seconds
+//    hwlib::cout << "You can play for a couple of seconds" << "\n";
+//    for (;;) {
 //        currTime = hwlib::now_us();
 //        if (currTime - startTime > 10000000) {
 //            break;
@@ -101,7 +113,8 @@
 //    testSynth.enableVibrato(20, 0.5);
 //    startTime = hwlib::now_us();
 //
-//    for (;;) { // You can play the keyboard for 10 seconds, now with a dramatic vibrato effect
+//    hwlib::cout << "You can play for a couple of seconds, with vibrato" << "\n";
+//    for (;;) {
 //        currTime = hwlib::now_us();
 //        if (currTime - startTime > 10000000) {
 //            break;
@@ -111,10 +124,11 @@
 //    }
 //
 //    testSynth.disableVibrato();
-//    synth.enableGlissando(0.3);
+//    testSynth.enableGlissando(0.3);
 //    startTime = hwlib::now_us();
 //
-//    for (;;) { // You can play the keyboard for 10 seconds, now with a glissando effect
+//    hwlib::cout << "You can play for a couple of seconds, with glissando" << "\n";
+//    for (;;) {
 //        currTime = hwlib::now_us();
 //        if (currTime - startTime > 10000000) {
 //            break;
@@ -124,10 +138,11 @@
 //    }
 //
 //    testSynth.disableGlissando();
-//    synth.enablePhaseVibrato(200, 20);
+//    testSynth.enablePhaseVibrato(200, 20);
 //    startTime = hwlib::now_us();
 //
-//    for (;;) { // You can play the keyboard for 10 seconds, now with a phase vibrato effect
+//    hwlib::cout << "You can play for a couple of seconds, with phase vibrato" << "\n";
+//    for (;;) {
 //        currTime = hwlib::now_us();
 //        if (currTime - startTime > 10000000) {
 //            break;
@@ -140,11 +155,12 @@
 //
 //    // If you have more than one AD9833 chip, you can test polyphony here
 //    // Hook up the second chip's fsync to pin 52, hook up the same SDATA and SCLK pins as the first chip
-//    auto testEnablePin2 = hwlib::target::pin_out(target::pins::d52);
-//    auto testChip2 = soundchip::ad9833(testEnablePin2, testPinClock, testSpibus, masterClock);
+//    auto testEnablePin2 = hwlib::target::pin_out(hwlib::target::pins::d52);
+//    auto testChip2 = soundchip::ad9833(testEnablePin2, testPinClock, testSpibus, testMasterClock);
 //    auto testSynth2 = synthesizer::synthesizer(testChip2, testKeyboard);
 //
-//    for (;;) { // You can play the keyboard for 10 seconds, now with two note polyphony
+//    hwlib::cout << "You can play for a couple of seconds, with two note polyphony" << "\n";
+//    for (;;) {
 //        currTime = hwlib::now_us();
 //        if (currTime - startTime > 10000000) {
 //            break;
@@ -153,4 +169,6 @@
 //        testSynth.update();
 //        testSynth2.update();
 //    }
+//    testChip2.disableOutput();
+//    testChip.disableOutput();
 //}
