@@ -6,6 +6,9 @@
 
 
 /// @file
+/// \brief
+/// Contains the declaration for the pin_in_invert class
+///
 
 #include "hwlib.hpp"
 

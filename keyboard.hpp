@@ -6,7 +6,9 @@
 
 
 /// @file
-
+/// \brief
+/// Contains the declaration for the keyboard class
+///
 
 #include "hwlib.hpp"
 #include "numkeys.hpp"
@@ -36,7 +38,7 @@ namespace keyboard {
         /// A function that will check which keys are currently pressed
         virtual void checkActiveKeys() = 0;
     public:
-        /// A constructor that only needs the frequency for the note which belongs to the first key of the keyboard (frequency should be in the notes.hpp file)
+        /// A constructor that only needs the frequency for the note which belongs to the first key of the keyboard (chosen frequency should be in the notes.hpp file)
         keyboard(const float& startNote_hz = noteC4) : startNote(startNote_hz) {
             for(unsigned int i = 0; i < noteArray.size(); i++) {
                 if (noteArray[i] == startNote_hz) {
@@ -45,7 +47,7 @@ namespace keyboard {
             }
         }
 
-        /// A function to renew all values, like which keys are pressed and which keys are already being taken care off
+        /// A function to renew all values, like which keys are pressed and which keys have already triggered a note
         virtual void update() = 0;
 
         /// A function that will return an array of booleans to tell which keys are being pressed
@@ -57,7 +59,7 @@ namespace keyboard {
         /// A function that will set a specific key to used, so that another oscillator will not try to use it
         virtual void setKeyUsed(unsigned int& keyIndex) { usedKeys[keyIndex] = true;}
 
-        /// A function that will return which keys are already being taken care off
+        /// A function that will return which keys have already triggered a note
         virtual std::array<bool, NUMKEYS> getUsedKeys() { return usedKeys;}
 
     };

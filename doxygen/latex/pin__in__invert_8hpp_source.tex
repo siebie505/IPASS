@@ -1,0 +1,37 @@
+\hypertarget{pin__in__invert_8hpp_source}{}\doxysection{pin\+\_\+in\+\_\+invert.\+hpp}
+\mbox{\hyperlink{pin__in__invert_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Author: Siebren Bouwhuis}}
+\DoxyCodeLine{2 \textcolor{comment}{// Copyright Siebren Bouwhuis 2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{// Distributed under the Boost Software License, Version 1.0.}}
+\DoxyCodeLine{4 \textcolor{comment}{// (See accompanying file LICENSE.txt or copy at http://www.boost.org/LICENSE\_1\_0.txt)}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}hwlib.hpp"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef PIN\_IN\_INVERT\_HPP}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define PIN\_IN\_INVERT\_HPP}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classpin__in__invert}{pin\_in\_invert}} : \textcolor{keyword}{public} hwlib::pin\_in \{}
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22     hwlib::pin\_in\& slave;}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \mbox{\hyperlink{classpin__in__invert_a73eadc874bcf3e2685261de5af0455d1}{pin\_in\_invert}}(hwlib::pin\_in}
+\DoxyCodeLine{26     \&slave) :}
+\DoxyCodeLine{27     slave(slave) \{\}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classpin__in__invert_abb80a44cf5afa26fcf5d3f048ff1b7e5}{read}}()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{31         \textcolor{keywordflow}{return} !slave.read();}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{classpin__in__invert_aaee7149fe567bf0bdaec7d0ff650bbcb}{refresh}}()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{36         slave.refresh();}
+\DoxyCodeLine{37     \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PIN\_IN\_INVERT\_HPP */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

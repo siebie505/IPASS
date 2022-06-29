@@ -1,0 +1,37 @@
+\hypertarget{classeffects_1_1vibrato}{}\doxysection{effects\+::vibrato Class Reference}
+\label{classeffects_1_1vibrato}\index{effects::vibrato@{effects::vibrato}}
+
+
+A class to apply the vibrato effect.  
+
+
+
+
+{\ttfamily \#include $<$vibrato.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classeffects_1_1vibrato_a33357c96ef18fafe541dbc56b8c06963}\label{classeffects_1_1vibrato_a33357c96ef18fafe541dbc56b8c06963}} 
+{\bfseries vibrato} (\mbox{\hyperlink{classsoundchip_1_1soundchip}{soundchip\+::soundchip}} \&chip)
+\begin{DoxyCompactList}\small\item\em A constructor which requires a soundchip to send the information to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1vibrato_a28e58f26a70f4f4f8ca925f1fe0b1c80}\label{classeffects_1_1vibrato_a28e58f26a70f4f4f8ca925f1fe0b1c80}} 
+void {\bfseries set} (const bool \&vibrato\+\_\+p, const int \&vibrato\+Speed\+\_\+p, const int \&vibrato\+Depth\+\_\+p)
+\begin{DoxyCompactList}\small\item\em set the effect paramters, namely wether it is on, its speed and its depth \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1vibrato_a9937faf2a4f439259f756f01be1da6c5}\label{classeffects_1_1vibrato_a9937faf2a4f439259f756f01be1da6c5}} 
+void {\bfseries set\+Freq} (const float \&freq\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Send a new note to the effect, restarting it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1vibrato_a7e502b6e9250807f62bd9f24239a502c}\label{classeffects_1_1vibrato_a7e502b6e9250807f62bd9f24239a502c}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em (Sometimes) Take the next step in the vibrato effect, depending on how much time has passed since the previous step \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to apply the vibrato effect. 
+
+A class to apply the vibrato effect to a sound, information is still sent through this class if the effect is disabled 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{vibrato_8hpp}{vibrato.\+hpp}}\item 
+vibrato.\+cpp\end{DoxyCompactItemize}

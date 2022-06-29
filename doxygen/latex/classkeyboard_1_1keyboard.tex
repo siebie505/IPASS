@@ -1,0 +1,96 @@
+\hypertarget{classkeyboard_1_1keyboard}{}\doxysection{keyboard\+::keyboard Class Reference}
+\label{classkeyboard_1_1keyboard}\index{keyboard::keyboard@{keyboard::keyboard}}
+
+
+An abstract base class which can be inherited from, used for all sorts of input methods to act as musical keyboards. Make sure to set the proper number of keys in \mbox{\hyperlink{numkeys_8hpp}{numkeys.\+hpp}}.  
+
+
+
+
+{\ttfamily \#include $<$keyboard.\+hpp$>$}
+
+Inheritance diagram for keyboard\+::keyboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classkeyboard_1_1keyboard}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a1acb54937cbe9529b4fa0a78a5385452}\label{classkeyboard_1_1keyboard_a1acb54937cbe9529b4fa0a78a5385452}} 
+{\bfseries keyboard} (const float \&start\+Note\+\_\+hz=note\+C4)
+\begin{DoxyCompactList}\small\item\em A constructor that only needs the frequency for the note which belongs to the first key of the keyboard (chosen frequency should be in the \mbox{\hyperlink{notes_8hpp}{notes.\+hpp}} file) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classkeyboard_1_1keyboard_ae27ba7a8ac7b4dbb805343afb3862851}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em A function to renew all values, like which keys are pressed and which keys have already triggered a note. \end{DoxyCompactList}\item 
+virtual std\+::array$<$ bool, NUMKEYS $>$ \mbox{\hyperlink{classkeyboard_1_1keyboard_a1a4c8841e31e5f1074f1ad76d78c21dd}{get\+Active\+Keys}} ()=0
+\begin{DoxyCompactList}\small\item\em A function that will return an array of booleans to tell which keys are being pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a72c1e8feedf648a676d39e674cdd6423}\label{classkeyboard_1_1keyboard_a72c1e8feedf648a676d39e674cdd6423}} 
+int {\bfseries get\+Start\+Note\+Number} ()
+\begin{DoxyCompactList}\small\item\em A function that will return the index of the start\+Note in the notes array in \mbox{\hyperlink{notes_8hpp}{notes.\+hpp}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a9ab7a9aca7962779f8e865c36cfbbc3b}\label{classkeyboard_1_1keyboard_a9ab7a9aca7962779f8e865c36cfbbc3b}} 
+virtual void {\bfseries set\+Key\+Used} (unsigned int \&key\+Index)
+\begin{DoxyCompactList}\small\item\em A function that will set a specific key to used, so that another oscillator will not try to use it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a51a7ec184055f391470a46d7f4ffe088}\label{classkeyboard_1_1keyboard_a51a7ec184055f391470a46d7f4ffe088}} 
+virtual std\+::array$<$ bool, NUMKEYS $>$ {\bfseries get\+Used\+Keys} ()
+\begin{DoxyCompactList}\small\item\em A function that will return which keys have already triggered a note. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_ab95a653b262c31a1af22d43d0943975a}\label{classkeyboard_1_1keyboard_ab95a653b262c31a1af22d43d0943975a}} 
+virtual void {\bfseries check\+Active\+Keys} ()=0
+\begin{DoxyCompactList}\small\item\em A function that will check which keys are currently pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a4df776c1ca89431282e12d96d780b476}\label{classkeyboard_1_1keyboard_a4df776c1ca89431282e12d96d780b476}} 
+std\+::array$<$ bool, NUMKEYS $>$ {\bfseries key\+States}
+\begin{DoxyCompactList}\small\item\em An array which keeps track of which keys are pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_abe8844252ad30567a924a5d83227704a}\label{classkeyboard_1_1keyboard_abe8844252ad30567a924a5d83227704a}} 
+std\+::array$<$ bool, NUMKEYS $>$ {\bfseries used\+Keys}
+\begin{DoxyCompactList}\small\item\em An array which keeps track of which keys have already been handled, and for which a sound is already playing (used for polyphony) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_ad5c53e2a33a5aacfb3f6550852bad04d}\label{classkeyboard_1_1keyboard_ad5c53e2a33a5aacfb3f6550852bad04d}} 
+float {\bfseries start\+Note}
+\begin{DoxyCompactList}\small\item\em The frequency of the note which the first key of the keyboard should play. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a77dea655ab1992674ba5010752673e16}\label{classkeyboard_1_1keyboard_a77dea655ab1992674ba5010752673e16}} 
+int {\bfseries start\+Note\+Number}
+\begin{DoxyCompactList}\small\item\em The index of the start\+Note value in the array located in \mbox{\hyperlink{notes_8hpp}{notes.\+hpp}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract base class which can be inherited from, used for all sorts of input methods to act as musical keyboards. Make sure to set the proper number of keys in \mbox{\hyperlink{numkeys_8hpp}{numkeys.\+hpp}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_a1a4c8841e31e5f1074f1ad76d78c21dd}\label{classkeyboard_1_1keyboard_a1a4c8841e31e5f1074f1ad76d78c21dd}} 
+\index{keyboard::keyboard@{keyboard::keyboard}!getActiveKeys@{getActiveKeys}}
+\index{getActiveKeys@{getActiveKeys}!keyboard::keyboard@{keyboard::keyboard}}
+\doxysubsubsection{\texorpdfstring{getActiveKeys()}{getActiveKeys()}}
+{\footnotesize\ttfamily virtual std\+::array$<$ bool, NUMKEYS $>$ keyboard\+::keyboard\+::get\+Active\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A function that will return an array of booleans to tell which keys are being pressed. 
+
+
+
+Implemented in \mbox{\hyperlink{classkeyboard_1_1keyboard_buttons_aff0cd30a18ecc21483e48d929a326f63}{keyboard\+::keyboard\+Buttons}}.
+
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_ae27ba7a8ac7b4dbb805343afb3862851}\label{classkeyboard_1_1keyboard_ae27ba7a8ac7b4dbb805343afb3862851}} 
+\index{keyboard::keyboard@{keyboard::keyboard}!update@{update}}
+\index{update@{update}!keyboard::keyboard@{keyboard::keyboard}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void keyboard\+::keyboard\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A function to renew all values, like which keys are pressed and which keys have already triggered a note. 
+
+
+
+Implemented in \mbox{\hyperlink{classkeyboard_1_1keyboard_buttons_a28b3d7bfe3e4095bece8a3bcc4ea8a3b}{keyboard\+::keyboard\+Buttons}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{keyboard_8hpp}{keyboard.\+hpp}}\end{DoxyCompactItemize}

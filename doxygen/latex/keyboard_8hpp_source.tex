@@ -1,0 +1,57 @@
+\hypertarget{keyboard_8hpp_source}{}\doxysection{keyboard.\+hpp}
+\mbox{\hyperlink{keyboard_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Author: Siebren Bouwhuis}}
+\DoxyCodeLine{2 \textcolor{comment}{// Copyright Siebren Bouwhuis 2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{// Distributed under the Boost Software License, Version 1.0.}}
+\DoxyCodeLine{4 \textcolor{comment}{// (See accompanying file LICENSE.txt or copy at http://www.boost.org/LICENSE\_1\_0.txt)}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}hwlib.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{numkeys_8hpp}{numkeys.hpp}}"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{notes_8hpp}{notes.hpp}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#ifndef KEYBOARD\_HPP}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define KEYBOARD\_HPP}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }keyboard \{}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23     \textcolor{keyword}{class }\mbox{\hyperlink{classkeyboard_1_1keyboard}{keyboard}} \{}
+\DoxyCodeLine{24     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{27         std::array<bool, NUMKEYS> \mbox{\hyperlink{classkeyboard_1_1keyboard_a4df776c1ca89431282e12d96d780b476}{keyStates}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{30         std::array<bool, NUMKEYS> \mbox{\hyperlink{classkeyboard_1_1keyboard_abe8844252ad30567a924a5d83227704a}{usedKeys}};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{float} \mbox{\hyperlink{classkeyboard_1_1keyboard_ad5c53e2a33a5aacfb3f6550852bad04d}{startNote}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{int} \mbox{\hyperlink{classkeyboard_1_1keyboard_a77dea655ab1992674ba5010752673e16}{startNoteNumber}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{39         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classkeyboard_1_1keyboard_ab95a653b262c31a1af22d43d0943975a}{checkActiveKeys}}() = 0;}
+\DoxyCodeLine{40     \textcolor{keyword}{public}:}
+\DoxyCodeLine{42         \mbox{\hyperlink{classkeyboard_1_1keyboard_a1acb54937cbe9529b4fa0a78a5385452}{keyboard}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float}\& startNote\_hz = noteC4) : startNote(startNote\_hz) \{}
+\DoxyCodeLine{43             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < noteArray.size(); i++) \{}
+\DoxyCodeLine{44                 \textcolor{keywordflow}{if} (noteArray[i] == startNote\_hz) \{}
+\DoxyCodeLine{45                     startNoteNumber = i;}
+\DoxyCodeLine{46                 \}}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48         \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{51         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classkeyboard_1_1keyboard_ae27ba7a8ac7b4dbb805343afb3862851}{update}}() = 0;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{54         \textcolor{keyword}{virtual} std::array<bool, NUMKEYS> \mbox{\hyperlink{classkeyboard_1_1keyboard_a1a4c8841e31e5f1074f1ad76d78c21dd}{getActiveKeys}}() = 0;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{57         \textcolor{keywordtype}{int} \mbox{\hyperlink{classkeyboard_1_1keyboard_a72c1e8feedf648a676d39e674cdd6423}{getStartNoteNumber}}() \{ \textcolor{keywordflow}{return} startNoteNumber; \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{60         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classkeyboard_1_1keyboard_a9ab7a9aca7962779f8e865c36cfbbc3b}{setKeyUsed}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\& keyIndex) \{ usedKeys[keyIndex] = \textcolor{keyword}{true};\}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{63         \textcolor{keyword}{virtual} std::array<bool, NUMKEYS> \mbox{\hyperlink{classkeyboard_1_1keyboard_a51a7ec184055f391470a46d7f4ffe088}{getUsedKeys}}() \{ \textcolor{keywordflow}{return} usedKeys;\}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \};}
+\DoxyCodeLine{66 \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* KEYBOARD\_HPP */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

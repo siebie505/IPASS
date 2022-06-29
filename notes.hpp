@@ -7,7 +7,7 @@
 
 /// @file
 /// \brief
-/// Frequency values from all notes from C0 to and including B8, as well as an array containing all of them
+/// Frequency values from all notes from C0 up to and including B8, as well as an array containing all of them
 ///
 
 

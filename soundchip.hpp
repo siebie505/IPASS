@@ -6,6 +6,9 @@
 
 
 /// @file
+/// \brief
+/// Contains the declaration for the soundchip class
+///
 
 #ifndef SOUNDCHIP_HPP
 #define SOUNDCHIP_HPP
@@ -13,9 +16,11 @@
 enum waveType{SINE, TRIANGLE, SQUARE, HALF_SQUARE};
 
 namespace soundchip {
-    /// An abstract base class which can be inherited from
-    ///
+    /// \brief
+    /// An abstract base class for soundchips which can be inherited from
+    /// \details
     /// Used for any concrete class which controls a soundchip
+    ///
     class soundchip {
     public:
         /// An empty constructor

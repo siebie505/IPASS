@@ -1,0 +1,40 @@
+\hypertarget{classeffects_1_1glissando}{}\doxysection{effects\+::glissando Class Reference}
+\label{classeffects_1_1glissando}\index{effects::glissando@{effects::glissando}}
+
+
+A class to apply the glissando effect.  
+
+
+
+
+{\ttfamily \#include $<$glissando.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classeffects_1_1glissando_a27974e9c36a0533e838077bbf967bc35}\label{classeffects_1_1glissando_a27974e9c36a0533e838077bbf967bc35}} 
+{\bfseries glissando} (\mbox{\hyperlink{classeffects_1_1vibrato}{effects\+::vibrato}} \&vibrato1)
+\begin{DoxyCompactList}\small\item\em Glissando constructor that needs only a vibrato class to next pass the frequency information to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1glissando_a9db7b23bc44dd89a063d6e34600d44ba}\label{classeffects_1_1glissando_a9db7b23bc44dd89a063d6e34600d44ba}} 
+void {\bfseries set} (const bool \&glissando\+On\+\_\+p, const int \&glissando\+Time\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Update the glissando class information, namely wether the effect should be on and how long the glissando\textquotesingle{}s should take. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1glissando_a4332d72bb10600c41cad0daec9180616}\label{classeffects_1_1glissando_a4332d72bb10600c41cad0daec9180616}} 
+void {\bfseries set\+Notes} (const float \&current\+Note\+\_\+p, const float \&last\+Note\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Pass a new note to the glissando class, along with the previous note. Will trigger the effect to start. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1glissando_a7e1466879a5523ae7ce7ee8592e28660}\label{classeffects_1_1glissando_a7e1466879a5523ae7ce7ee8592e28660}} 
+bool {\bfseries get\+Glissando\+Done} ()
+\begin{DoxyCompactList}\small\item\em Return wether the current glissando is finished or not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1glissando_a17a14fae9f148a1746403f3ff997f37c}\label{classeffects_1_1glissando_a17a14fae9f148a1746403f3ff997f37c}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em (Sometimes) Do the next step in the glissando, sometimes it will skip, depending on how long ago the last update call was \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to apply the glissando effect. 
+
+A class to apply the glissando effect to a sound, if glissando is turned off information will still pass through this class, unaltered 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{glissando_8hpp}{glissando.\+hpp}}\item 
+glissando.\+cpp\end{DoxyCompactItemize}

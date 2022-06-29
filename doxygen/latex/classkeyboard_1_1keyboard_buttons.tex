@@ -1,0 +1,68 @@
+\hypertarget{classkeyboard_1_1keyboard_buttons}{}\doxysection{keyboard\+::keyboard\+Buttons Class Reference}
+\label{classkeyboard_1_1keyboard_buttons}\index{keyboard::keyboardButtons@{keyboard::keyboardButtons}}
+
+
+A concrete class based on the keyboard class, which uses simple buttons as an input method.  
+
+
+
+
+{\ttfamily \#include $<$keyboard\+Buttons.\+hpp$>$}
+
+Inheritance diagram for keyboard\+::keyboard\+Buttons\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classkeyboard_1_1keyboard_buttons}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_buttons_a5036bae3665e76640f480270cb3e8344}\label{classkeyboard_1_1keyboard_buttons_a5036bae3665e76640f480270cb3e8344}} 
+{\bfseries keyboard\+Buttons} (std\+::array$<$ hwlib\+::pin\+\_\+in $\ast$, NUMKEYS $>$ \&keys, const float \&start\+Note\+\_\+hz=note\+C4)
+\begin{DoxyCompactList}\small\item\em A constructor which requires an array of input pins used as keys, and the frequency of the note corresponding to the first key (must be in \mbox{\hyperlink{notes_8hpp}{notes.\+hpp}}). Remember to set the amount of keyboard keys in \mbox{\hyperlink{numkeys_8hpp}{numkeys.\+hpp}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkeyboard_1_1keyboard_buttons_a28b3d7bfe3e4095bece8a3bcc4ea8a3b}{update}} () override
+\begin{DoxyCompactList}\small\item\em A function to update all the information, like which keys are pressed and which are already being used. \end{DoxyCompactList}\item 
+std\+::array$<$ bool, NUMKEYS $>$ \mbox{\hyperlink{classkeyboard_1_1keyboard_buttons_aff0cd30a18ecc21483e48d929a326f63}{get\+Active\+Keys}} () override
+\begin{DoxyCompactList}\small\item\em A function to return which keys are pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A concrete class based on the keyboard class, which uses simple buttons as an input method. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_buttons_aff0cd30a18ecc21483e48d929a326f63}\label{classkeyboard_1_1keyboard_buttons_aff0cd30a18ecc21483e48d929a326f63}} 
+\index{keyboard::keyboardButtons@{keyboard::keyboardButtons}!getActiveKeys@{getActiveKeys}}
+\index{getActiveKeys@{getActiveKeys}!keyboard::keyboardButtons@{keyboard::keyboardButtons}}
+\doxysubsubsection{\texorpdfstring{getActiveKeys()}{getActiveKeys()}}
+{\footnotesize\ttfamily std\+::array$<$ bool, NUMKEYS $>$ keyboard\+::keyboard\+Buttons\+::get\+Active\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A function to return which keys are pressed. 
+
+
+
+Implements \mbox{\hyperlink{classkeyboard_1_1keyboard_a1a4c8841e31e5f1074f1ad76d78c21dd}{keyboard\+::keyboard}}.
+
+\mbox{\Hypertarget{classkeyboard_1_1keyboard_buttons_a28b3d7bfe3e4095bece8a3bcc4ea8a3b}\label{classkeyboard_1_1keyboard_buttons_a28b3d7bfe3e4095bece8a3bcc4ea8a3b}} 
+\index{keyboard::keyboardButtons@{keyboard::keyboardButtons}!update@{update}}
+\index{update@{update}!keyboard::keyboardButtons@{keyboard::keyboardButtons}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void keyboard\+::keyboard\+Buttons\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A function to update all the information, like which keys are pressed and which are already being used. 
+
+
+
+Implements \mbox{\hyperlink{classkeyboard_1_1keyboard_ae27ba7a8ac7b4dbb805343afb3862851}{keyboard\+::keyboard}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{keyboard_buttons_8hpp}{keyboard\+Buttons.\+hpp}}\item 
+keyboard\+Buttons.\+cpp\end{DoxyCompactItemize}

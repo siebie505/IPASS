@@ -1,0 +1,116 @@
+\hypertarget{classsoundchip_1_1soundchip}{}\doxysection{soundchip\+::soundchip Class Reference}
+\label{classsoundchip_1_1soundchip}\index{soundchip::soundchip@{soundchip::soundchip}}
+
+
+An abstract base class for soundchips which can be inherited from.  
+
+
+
+
+{\ttfamily \#include $<$soundchip.\+hpp$>$}
+
+Inheritance diagram for soundchip\+::soundchip\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsoundchip_1_1soundchip}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_a72035833f4edaf3f715bdf6bf9a8a75d}\label{classsoundchip_1_1soundchip_a72035833f4edaf3f715bdf6bf9a8a75d}} 
+{\bfseries soundchip} ()
+\begin{DoxyCompactList}\small\item\em An empty constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsoundchip_1_1soundchip_a0852f162ca310ba51254b321096647a7}{set\+Freq}} (const float \&freq\+\_\+hz)=0
+\begin{DoxyCompactList}\small\item\em An abstract function to set the frequency output by the chip. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsoundchip_1_1soundchip_a7cfa60ce742b993d83739a075353ff16}{set\+Phase}} (const int \&phase\+\_\+deg)=0
+\begin{DoxyCompactList}\small\item\em An abstract function to set the phase output by the chip. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsoundchip_1_1soundchip_ac03c32cfe6e9ccd34aabd541c2af584d}{set\+Wave}} (const wave\+Type \&wavetype)=0
+\begin{DoxyCompactList}\small\item\em An abstract function to set the wavetype output by the chip. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsoundchip_1_1soundchip_adadcd71bc32e5ea15ab0e2d89fab195b}{enable\+Output}} ()=0
+\begin{DoxyCompactList}\small\item\em An abstract function to enable the output of the chip. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsoundchip_1_1soundchip_add15338fb345b7ed612fbea2a8f52223}{disable\+Output}} ()=0
+\begin{DoxyCompactList}\small\item\em An abstract function to disable the output of the chip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract base class for soundchips which can be inherited from. 
+
+Used for any concrete class which controls a soundchip 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_add15338fb345b7ed612fbea2a8f52223}\label{classsoundchip_1_1soundchip_add15338fb345b7ed612fbea2a8f52223}} 
+\index{soundchip::soundchip@{soundchip::soundchip}!disableOutput@{disableOutput}}
+\index{disableOutput@{disableOutput}!soundchip::soundchip@{soundchip::soundchip}}
+\doxysubsubsection{\texorpdfstring{disableOutput()}{disableOutput()}}
+{\footnotesize\ttfamily virtual void soundchip\+::soundchip\+::disable\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An abstract function to disable the output of the chip. 
+
+
+
+Implemented in \mbox{\hyperlink{classsoundchip_1_1ad9833_a225b4038559ddea5bbc28e4e018f5d43}{soundchip\+::ad9833}}.
+
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_adadcd71bc32e5ea15ab0e2d89fab195b}\label{classsoundchip_1_1soundchip_adadcd71bc32e5ea15ab0e2d89fab195b}} 
+\index{soundchip::soundchip@{soundchip::soundchip}!enableOutput@{enableOutput}}
+\index{enableOutput@{enableOutput}!soundchip::soundchip@{soundchip::soundchip}}
+\doxysubsubsection{\texorpdfstring{enableOutput()}{enableOutput()}}
+{\footnotesize\ttfamily virtual void soundchip\+::soundchip\+::enable\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An abstract function to enable the output of the chip. 
+
+
+
+Implemented in \mbox{\hyperlink{classsoundchip_1_1ad9833_ae0ee19b93d3e0ad422c04bdcc539fdac}{soundchip\+::ad9833}}.
+
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_a0852f162ca310ba51254b321096647a7}\label{classsoundchip_1_1soundchip_a0852f162ca310ba51254b321096647a7}} 
+\index{soundchip::soundchip@{soundchip::soundchip}!setFreq@{setFreq}}
+\index{setFreq@{setFreq}!soundchip::soundchip@{soundchip::soundchip}}
+\doxysubsubsection{\texorpdfstring{setFreq()}{setFreq()}}
+{\footnotesize\ttfamily virtual void soundchip\+::soundchip\+::set\+Freq (\begin{DoxyParamCaption}\item[{const float \&}]{freq\+\_\+hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An abstract function to set the frequency output by the chip. 
+
+
+
+Implemented in \mbox{\hyperlink{classsoundchip_1_1ad9833_a00358894b6a9d0992b0d497c0eb3ae02}{soundchip\+::ad9833}}.
+
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_a7cfa60ce742b993d83739a075353ff16}\label{classsoundchip_1_1soundchip_a7cfa60ce742b993d83739a075353ff16}} 
+\index{soundchip::soundchip@{soundchip::soundchip}!setPhase@{setPhase}}
+\index{setPhase@{setPhase}!soundchip::soundchip@{soundchip::soundchip}}
+\doxysubsubsection{\texorpdfstring{setPhase()}{setPhase()}}
+{\footnotesize\ttfamily virtual void soundchip\+::soundchip\+::set\+Phase (\begin{DoxyParamCaption}\item[{const int \&}]{phase\+\_\+deg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An abstract function to set the phase output by the chip. 
+
+
+
+Implemented in \mbox{\hyperlink{classsoundchip_1_1ad9833_ae07d66bd0534062e442db0889de022f3}{soundchip\+::ad9833}}.
+
+\mbox{\Hypertarget{classsoundchip_1_1soundchip_ac03c32cfe6e9ccd34aabd541c2af584d}\label{classsoundchip_1_1soundchip_ac03c32cfe6e9ccd34aabd541c2af584d}} 
+\index{soundchip::soundchip@{soundchip::soundchip}!setWave@{setWave}}
+\index{setWave@{setWave}!soundchip::soundchip@{soundchip::soundchip}}
+\doxysubsubsection{\texorpdfstring{setWave()}{setWave()}}
+{\footnotesize\ttfamily virtual void soundchip\+::soundchip\+::set\+Wave (\begin{DoxyParamCaption}\item[{const wave\+Type \&}]{wavetype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An abstract function to set the wavetype output by the chip. 
+
+
+
+Implemented in \mbox{\hyperlink{classsoundchip_1_1ad9833_a08eec4c1d6276853b60ab49808d25047}{soundchip\+::ad9833}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{soundchip_8hpp}{soundchip.\+hpp}}\end{DoxyCompactItemize}

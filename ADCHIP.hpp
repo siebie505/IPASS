@@ -6,7 +6,9 @@
 
 
 /// @file
-
+/// \brief
+/// Contains the declaration for the AD9833 class
+///
 #include "soundchip.hpp"
 #include "hwlib.hpp"
 
@@ -15,10 +17,11 @@
 #define ADCHIP_HPP
 
 namespace soundchip {
-
-/// A AD9833 soundchip
-///
+/// \brief
+/// An AD9833 soundchip
+/// \details
 /// This class abstracts the control of a AD9833 chip
+///
 
 class ad9833 : public soundchip {
     private:
@@ -134,7 +137,7 @@ class ad9833 : public soundchip {
 
 
     public:
-        /// Create an AD9833 object by giving the enablepin spefific to the chip, an spi bus and it's clock pin separately and the frequency of the masterclock
+        /// Create an AD9833 object by giving the enablepin specific to the chip, an spi bus and its clock pin separately, and the frequency of the masterclock
         ad9833(hwlib::pin_out& enablePin_p, hwlib::pin_out& clockPin_p, hwlib::spi_bus_bit_banged_sclk_mosi_miso& spi_bus, const int& masterClock);
 
         /// A function that will write the given frequency to the given register

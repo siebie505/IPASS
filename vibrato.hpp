@@ -6,7 +6,9 @@
 
 
 /// @file
-
+/// \brief
+/// Contains the declaration for the vibrato class
+///
 
 #include "soundchip.hpp"
 #include "phaseVibrato.hpp"
@@ -17,10 +19,11 @@
 
 namespace effects {
 
-
+    /// \brief
     /// A class to apply the vibrato effect
-    ///
+    /// \details
     /// A class to apply the vibrato effect to a sound, information is still sent through this class if the effect is disabled
+    ///
     class vibrato {
     private:
         /// The chip to send the information to
@@ -54,7 +57,7 @@ namespace effects {
         /// A constructor which requires a soundchip to send the information to
         vibrato(soundchip::soundchip& chip);
 
-        /// set the effect paramters, namely wether it is on, it's speed and it's depth
+        /// set the effect paramters, namely wether it is on, its speed and its depth
         void set(const bool &vibrato_p, const int &vibratoSpeed_p, const int& vibratoDepth_p);
 
         /// Send a new note to the effect, restarting it

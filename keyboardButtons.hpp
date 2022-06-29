@@ -6,6 +6,9 @@
 
 
 /// @file
+/// \brief
+/// Contains the declaration for the keyboardButtons class
+///
 
 #include "hwlib.hpp"
 #include "keyboard.hpp"
@@ -18,7 +21,7 @@
 
 namespace keyboard {
 
-    /// A concrete class based on the keyboard class, which used simple buttons as an imput method
+    /// A concrete class based on the keyboard class, which uses simple buttons as an input method
     class keyboardButtons : public keyboard {
     private:
 

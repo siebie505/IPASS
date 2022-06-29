@@ -1,0 +1,37 @@
+\hypertarget{classeffects_1_1phase_vibrato}{}\doxysection{effects\+::phase\+Vibrato Class Reference}
+\label{classeffects_1_1phase_vibrato}\index{effects::phaseVibrato@{effects::phaseVibrato}}
+
+
+A class to apply the phase vibrato effect.  
+
+
+
+
+{\ttfamily \#include $<$phase\+Vibrato.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classeffects_1_1phase_vibrato_aa4f1c98b43a1016f0857f78a4c7d879f}\label{classeffects_1_1phase_vibrato_aa4f1c98b43a1016f0857f78a4c7d879f}} 
+{\bfseries phase\+Vibrato} (\mbox{\hyperlink{classsoundchip_1_1soundchip}{soundchip\+::soundchip}} \&chip)
+\begin{DoxyCompactList}\small\item\em A constructor which requires a soundchip to send the information to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1phase_vibrato_abc611b718043ecb24e4acaf94f1a2725}\label{classeffects_1_1phase_vibrato_abc611b718043ecb24e4acaf94f1a2725}} 
+void {\bfseries set} (const bool \&phase\+Vibrato\+On\+\_\+p, const int \&phase\+Vibrato\+Speed\+\_\+p, const int \&phase\+Vibrato\+Depth\+\_\+p)
+\begin{DoxyCompactList}\small\item\em A function to set the effect parameters, namely wether it is on, its speed and its depth. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1phase_vibrato_a93f3c9042950d7132dc81baf1f29f9a7}\label{classeffects_1_1phase_vibrato_a93f3c9042950d7132dc81baf1f29f9a7}} 
+void {\bfseries set\+Phase} (const int \&phase\+\_\+p)
+\begin{DoxyCompactList}\small\item\em A function to call when a new note is played to update the current phase and to restart the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classeffects_1_1phase_vibrato_a714ed79d9bb866f0e5aa5d1c585e75d0}\label{classeffects_1_1phase_vibrato_a714ed79d9bb866f0e5aa5d1c585e75d0}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em A function that will (sometimes) do the next increase or decrease in phase, but only when enough time has passed since the last one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to apply the phase vibrato effect. 
+
+A class to apply the phase vibrato effect to a sound, phase information will still pass through this class if the effect is turned off 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{phase_vibrato_8hpp}{phase\+Vibrato.\+hpp}}\item 
+phase\+Vibrato.\+cpp\end{DoxyCompactItemize}

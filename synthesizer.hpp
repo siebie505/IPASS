@@ -6,7 +6,9 @@
 
 
 /// @file
-
+/// \brief
+/// Contains the declaration for the synthesizer class
+///
 
 #include "ADCHIP.hpp"
 #include "hwlib.hpp"
@@ -107,7 +109,7 @@ namespace synthesizer {
         /// Set the phase to be output to the chip
         void setPhase(const int& phase_deg);
 
-        /// Set the wavetype to be output to the chip (SINE, TRIANGLE, SQUARE OR HALF_SQUARE)
+        /// Set the wavetype to be output to the chip (SINE, TRIANGLE, SQUARE or HALF_SQUARE)
         void setWave(const waveType& wavetype);
 
         /// Check which keys are pressed, send new note information, update the effects

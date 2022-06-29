@@ -1,0 +1,68 @@
+\hypertarget{classsynthesizer_1_1synthesizer}{}\doxysection{synthesizer\+::synthesizer Class Reference}
+\label{classsynthesizer_1_1synthesizer}\index{synthesizer::synthesizer@{synthesizer::synthesizer}}
+
+
+A class which controls notes, keys and effects.  
+
+
+
+
+{\ttfamily \#include $<$synthesizer.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a8d0abe943caf77fe635d5358f9094cd4}\label{classsynthesizer_1_1synthesizer_a8d0abe943caf77fe635d5358f9094cd4}} 
+{\bfseries synthesizer} (\mbox{\hyperlink{classsoundchip_1_1soundchip}{soundchip\+::soundchip}} \&chip, \mbox{\hyperlink{classkeyboard_1_1keyboard}{keyboard\+::keyboard}} \&keys)
+\begin{DoxyCompactList}\small\item\em A constructor which takes a soundchip to send the information to and a keyboard to control the synthesizer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_aa38244ea6618e6027de2837cc0bd4c3d}\label{classsynthesizer_1_1synthesizer_aa38244ea6618e6027de2837cc0bd4c3d}} 
+void {\bfseries set\+Phase} (const int \&phase\+\_\+deg)
+\begin{DoxyCompactList}\small\item\em Set the phase to be output to the chip. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a4ba5624f98f557f4538709fb4916e4ad}\label{classsynthesizer_1_1synthesizer_a4ba5624f98f557f4538709fb4916e4ad}} 
+void {\bfseries set\+Wave} (const wave\+Type \&wavetype)
+\begin{DoxyCompactList}\small\item\em Set the wavetype to be output to the chip (SINE, TRIANGLE, SQUARE or HALF\+\_\+\+SQUARE) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_addce9fb7284936e4bc835be080dad1dd}\label{classsynthesizer_1_1synthesizer_addce9fb7284936e4bc835be080dad1dd}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Check which keys are pressed, send new note information, update the effects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a069528235849ad4cb9a09bc39960c82f}\label{classsynthesizer_1_1synthesizer_a069528235849ad4cb9a09bc39960c82f}} 
+void {\bfseries enable\+Glissando} (const int \&glissando\+Time\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Enable the glissando effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a747614f0b609774f5699f3ef445f6e50}\label{classsynthesizer_1_1synthesizer_a747614f0b609774f5699f3ef445f6e50}} 
+void {\bfseries disable\+Glissando} ()
+\begin{DoxyCompactList}\small\item\em Disable the glissando effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a15431ce80816d2e579a348c7702ffef8}\label{classsynthesizer_1_1synthesizer_a15431ce80816d2e579a348c7702ffef8}} 
+void {\bfseries enable\+Vibrato} (const int \&depth, const int \&speed)
+\begin{DoxyCompactList}\small\item\em Enable the vibrato effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a4b7b93274e53fff21552b623cbe5e65b}\label{classsynthesizer_1_1synthesizer_a4b7b93274e53fff21552b623cbe5e65b}} 
+void {\bfseries disable\+Vibrato} ()
+\begin{DoxyCompactList}\small\item\em Disable the vibrato effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_aa571aff867dc18034962a0aa6a74855d}\label{classsynthesizer_1_1synthesizer_aa571aff867dc18034962a0aa6a74855d}} 
+void {\bfseries enable\+Phase\+Vibrato} (const int \&depth, const int \&speed)
+\begin{DoxyCompactList}\small\item\em Enable the phase vibrato effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_aa094dfd4109414153b57fad8432d1ca0}\label{classsynthesizer_1_1synthesizer_aa094dfd4109414153b57fad8432d1ca0}} 
+void {\bfseries disable\+Phase\+Vibrato} ()
+\begin{DoxyCompactList}\small\item\em Disable the phase vibrato effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_a4e32decd58d87c3eca327d9b596e1a25}\label{classsynthesizer_1_1synthesizer_a4e32decd58d87c3eca327d9b596e1a25}} 
+void {\bfseries play\+Major} (const float \&start\+Note=note\+C5)
+\begin{DoxyCompactList}\small\item\em Play a major scale. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_ad58debe795d950a0bb6e24724156378f}\label{classsynthesizer_1_1synthesizer_ad58debe795d950a0bb6e24724156378f}} 
+void {\bfseries play\+Minor} (const float \&start\+Note=note\+C5)
+\begin{DoxyCompactList}\small\item\em Play a minor scale. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_ac11deabd5b27dfe35f8dac76fc96c239}\label{classsynthesizer_1_1synthesizer_ac11deabd5b27dfe35f8dac76fc96c239}} 
+void {\bfseries play\+Chromatic} (const float \&start\+Note=note\+C5)
+\begin{DoxyCompactList}\small\item\em Play a chromatic scale. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_acfdc3f0f6c0e2f05110bef14c54b902a}\label{classsynthesizer_1_1synthesizer_acfdc3f0f6c0e2f05110bef14c54b902a}} 
+void {\bfseries sound\+Effect} ()
+\begin{DoxyCompactList}\small\item\em Play a preprogrammed sound effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsynthesizer_1_1synthesizer_ad9e6a648f93dbd4ab1f4b154e4d4ef42}\label{classsynthesizer_1_1synthesizer_ad9e6a648f93dbd4ab1f4b154e4d4ef42}} 
+void {\bfseries random} ()
+\begin{DoxyCompactList}\small\item\em Play a random frequency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class which controls notes, keys and effects. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{synthesizer_8hpp}{synthesizer.\+hpp}}\item 
+synthesizer.\+cpp\end{DoxyCompactItemize}

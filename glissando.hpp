@@ -6,7 +6,9 @@
 
 
 /// @file
-
+/// \brief
+/// Contains the declaration for the glissando class
+///
 
 #include "vibrato.hpp"
 #include "phaseVibrato.hpp"
@@ -17,9 +19,12 @@
 
 namespace effects {
 
+    /// \brief
     /// A class to apply the glissando effect
-    ///
+    /// \details
     /// A class to apply the glissando effect to a sound, if glissando is turned off information will still pass through this class, unaltered
+    ///
+
     class glissando {
     private:
 
@@ -59,7 +64,7 @@ namespace effects {
         /// Update the glissando class information, namely wether the effect should be on and how long the glissando's should take
         void set(const bool& glissandoOn_p, const int& glissandoTime_p);
 
-        /// Pass a new note to the glissando class, along with the previous note
+        /// Pass a new note to the glissando class, along with the previous note. Will trigger the effect to start
         void setNotes(const float& currentNote_p, const float& lastNote_p);
 
         /// Return wether the current glissando is finished or not
